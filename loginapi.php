@@ -1,5 +1,4 @@
 <?php
-    // require 'connection.php';
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -9,19 +8,19 @@
         die("Connection Failed: ".mysqli_connect_error());
     }
     else{
-        $name = $_REQUEST["name"];
-        $login = $_REQUEST["username"];
+        $name = $_REQUEST["username"];
         $pass = $_REQUEST["pass"];
-        $sql = "Select login from usertable where login='$login'";
+        $sql = "Select login from usertable where login='$name' and password='$pass'";
         $result = mysqli_query($conn, $sql);
         $rows = mysqli_num_rows($result);
-        if($rows == 0){
-            $sql1 = "Insert into usertable(login, name, password) Values ('$login','$name','$pass')";
-            $result1 = mysqli_query($conn, $sql1);
-            echo json_encode("added");
+        if($rows == 1){
+            session_start();
+            $_SESSION["username"]=$name;
+            echo json_encode("confirmed");
         }
-        else{
+        else if($rows == 0){
             echo json_encode("error");
         }
+       
     }
 ?>

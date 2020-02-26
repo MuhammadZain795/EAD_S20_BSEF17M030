@@ -16,10 +16,10 @@
         <div class="container">
         <form class="mt-4">
             <div class="form-group">
-            Name: <input type="text" class="form-control" placeholder="Enter name" id="uname" name="uname">
+            Name: <input type="text" class="form-control" placeholder="Enter name" id="name" name="name">
             </div>
             <div class="form-group">
-            Login: <input type="text" class="form-control" placeholder="Enter login name" id="lname" name="lname">
+            Username: <input type="text" class="form-control" placeholder="Enter login name" id="username" name="username">
             </div>
             <div class="form-group">
             Password: <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
@@ -31,19 +31,19 @@
         </form>
         </div>
         <script>
-            var n,l,p,cp;
+            var n,u,p,cp;
             $(document).ready(function(){
                 $('#btn').click(function(){
-                    n = $('#uname').val();
-                    l = $('#lname').val();
+                    n = $('#name').val();
+                    u = $('#username').val();
                     p = $('#pwd').val();
                     cp = $('#cpwd').val();
                     if(cp!=p){
-                        alert("not equal");
+                        alert("Please enter same password...");
                         return;
                     }
                     else{
-                        let obj = {uname:n,lname:l,pass:p};
+                        let obj = {name:n,username:u,pass:p};
                         console.log(obj);
                         var ajaxcall = {
                             type: "POST",
@@ -54,15 +54,26 @@
                             error: OnError,
                         }
                         $.ajax(ajaxcall);
-                        console.log("request sent");
                     }
                 })
             });
             function successfunc(res){
+                if(res=="added"){
+                window.location.href="login.php";
+                }
+                else if(res=="error"){
+                    alert("Choose another username!!!");
+                }
                 console.log(res);
             }
-            function OnError(){
-                console.log("error");
+            function OnError(res){
+                if(res=="added"){
+                window.location.href="login.php";
+                }
+                else if(res=="error"){
+                    alert("Choose another username!!!");
+                }
+                console.log(res);
             }
         </script>
     </body>
