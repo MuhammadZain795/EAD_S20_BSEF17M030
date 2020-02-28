@@ -20,7 +20,7 @@
             $result1 = mysqli_query($conn, $sql1);
             echo json_encode("added");
         }
-        else{
+        else if($rows >= 1){
             echo json_encode("error");
         }
     }

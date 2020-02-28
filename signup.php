@@ -39,7 +39,7 @@
                     p = $('#pwd').val();
                     cp = $('#cpwd').val();
                     if(cp!=p){
-                        alert("Please enter same password...");
+                        alert("Please enter same password...v  c ");
                         return;
                     }
                     else{
