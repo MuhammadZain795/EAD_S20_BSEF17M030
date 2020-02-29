@@ -21,6 +21,5 @@
             $result1 = mysqli_query($conn, $sql1);
             echo json_encode("created");
         }
-        echo ("addfolder");
     }
 ?>

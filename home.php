@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <!-- <link href="./Assignment1/EAD_S20_BSEF17M030/css/signup.css" rel="stylesheet" type="text/css"> -->
-    <!-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script> -->
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -25,6 +23,7 @@
             </header>
             </div>
         </div>
+        <div class="folders"></div>
     </div>
     <script>
         var pid = $('.home .root').attr('name');
@@ -40,32 +39,33 @@
                 }
                 $.ajax(ajaxcall1);
         });
-        function pageload(){
-            let obj={'p':pid};
-            let ajaxcall1 = {
-                type: "POST",
-                dataType: "json",
-                url: "showfolder.php",
-                data: obj,
-                success: successfunc1,
-                error: OnError1,
-                }
-                $.ajax(ajaxcall1);
-        }
         function successfunc1(res){
             for(var i=0;i<res.length;i++){
-                var elem1 = $("<span>").attr({"name":res[i][0],"class":"root"}).css({"cursor":"pointer","border":"2px solid black"});
+                let elem1 = $("<span>").attr({"name":res[i][0],"class":"root"}).css({"cursor":"pointer","border":"2px solid black"});
                 elem1.text(res[i][1]);
-                $("#main").append(elem1);
-                $("#main").append("<hr>");
+                $(".folders").append(elem1);
+                $(".folders").append("<hr>");
             }
             $('.root').dblclick(function(){
-                console.log($(this).text());
+                $('.folders .root').remove();
+                $('.folders hr').remove();
                 let t = $(this).text();
                 let n = $(this).attr("name");
                 $('.home .root').text(t);
                 $('.home .root').attr('name',n);
-                pageload();
+                let pageload=function(){
+                    let obj={'p':n};
+                    let ajaxcall1 = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "showfolder.php",
+                    data: obj,
+                    success: successfunc1,
+                    error: OnError1,
+                    }
+                    $.ajax(ajaxcall1);
+                    }
+                    pageload();
             });
         }
         function OnError1(res){
@@ -75,14 +75,13 @@
                 $("#main").append(elem1);
                 $("#main").append("<hr>");
             }
-            console.log(res[0][1]);
         }
         $(document).ready(function(){
             $('#btn').click(function(){
                 var pid1 = $('.root').attr('name');
-        var n = $('#fname').val();
+                var n = $('#fname').val();
                 let obj = {foldername:n,parentid:pid1};
-                    var ajaxcall2 = {
+                    let ajaxcall2 = {
                         type: "POST",
                         dataType: "json",
                         url: "creatingfolderapi.php",
@@ -91,30 +90,22 @@
                         error: OnError2,
                     }
                     $.ajax(ajaxcall2);
+                    $('#id01').hide();
             })
             
         });  
         function successfunc2(res){
-            // if(res =="confirmed"){
-            //     // window.location.href="home.php";
-            // }
-            // else if(res == "error"){
-            // alert("Username or Password is incorrect!!!");
-            // }
-            console.log("ok");
+            if(res=="samenNameNotAllowed"){
+                alert("Same name is not allowed...");
+            }
             console.log(res);
         }
         function OnError2(res){
-            // if(res =="confirmed"){
-            //     window.location.href="home.php";
-            // }
-            // else if(res == "error"){
-            // alert("Username or Password is incorrect!!!");
-            // }
-            console.log("error");
+            if(res=="samenNameNotAllowed"){
+                alert("Same name is not allowed...");
+            }
             console.log(res);
         }
-        
     </script>
 </body>
 </html>
