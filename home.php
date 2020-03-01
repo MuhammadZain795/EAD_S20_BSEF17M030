@@ -23,13 +23,17 @@
             </header>
             </div>
         </div>
+        <button type="button" id="logout" style="background-color:danger">Log Out</button><hr>
         <div class="folders"></div>
     </div>
     <script>
+        $('#logout').click(function(){
+            window.location.replace("login.php");
+        });
         var pid = $('.home .root').attr('name');
         $(document).ready(function(){
             let obj={'p':pid};
-            let ajaxcall1 = {
+            var ajaxcall1 = {
                 type: "POST",
                 dataType: "json",
                 url: "showfolder.php",
@@ -76,12 +80,11 @@
                 $("#main").append("<hr>");
             }
         }
-        $(document).ready(function(){
-            $('#btn').click(function(){
+        $('#btn').click(function(){
                 var pid1 = $('.root').attr('name');
                 var n = $('#fname').val();
                 let obj = {foldername:n,parentid:pid1};
-                    let ajaxcall2 = {
+                    var ajaxcall2 = {
                         type: "POST",
                         dataType: "json",
                         url: "creatingfolderapi.php",
@@ -91,9 +94,18 @@
                     }
                     $.ajax(ajaxcall2);
                     $('#id01').hide();
-            })
-            
-        });  
+                    let n1 = $(this).attr("name");
+                    let obj1={'p':n1};
+                    var ajaxcall3 = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "showfolder.php",
+                    data: obj1,
+                    success: successfunc3,
+                    error: OnError3,
+                    }
+                    $.ajax(ajaxcall3);
+            });
         function successfunc2(res){
             if(res=="samenNameNotAllowed"){
                 alert("Same name is not allowed...");
@@ -105,6 +117,12 @@
                 alert("Same name is not allowed...");
             }
             console.log(res);
+        }
+        function successfunc3(res){
+            successfunc1(res);
+        }
+        function OnError3(res){
+            OnError1(res);
         }
     </script>
 </body>
