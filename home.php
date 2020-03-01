@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['username']) == false){
+        header('login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,18 +38,21 @@
         });
         var pid = $('.home .root').attr('name');
         $(document).ready(function(){
-            let obj={'p':pid};
-            var ajaxcall1 = {
+            folderDisplay(pid);
+        });
+        function folderDisplay(parentName){
+            let obj={'p':parentName};
+            var ajaxcallShow = {
                 type: "POST",
                 dataType: "json",
                 url: "showfolder.php",
                 data: obj,
-                success: successfunc1,
-                error: OnError1,
+                success: successShow,
+                error: errorShow,
                 }
-                $.ajax(ajaxcall1);
-        });
-        function successfunc1(res){
+                $.ajax(ajaxcallShow);
+        }
+        function successShow(res){
             for(var i=0;i<res.length;i++){
                 let elem1 = $("<span>").attr({"name":res[i][0],"class":"root"}).css({"cursor":"pointer","border":"2px solid black"});
                 elem1.text(res[i][1]);
@@ -57,22 +66,10 @@
                 let n = $(this).attr("name");
                 $('.home .root').text(t);
                 $('.home .root').attr('name',n);
-                let pageload=function(){
-                    let obj={'p':n};
-                    let ajaxcall1 = {
-                    type: "POST",
-                    dataType: "json",
-                    url: "showfolder.php",
-                    data: obj,
-                    success: successfunc1,
-                    error: OnError1,
-                    }
-                    $.ajax(ajaxcall1);
-                    }
-                    pageload();
+                folderDisplay(n);
             });
         }
-        function OnError1(res){
+        function errorShow(res){
             for(var i=0;i<res.length;i++){
                 var elem1 = $("<span>").attr("name",res[i][0]).attr("class","root");
                 elem1.text(res[i][1]);
@@ -89,40 +86,27 @@
                         dataType: "json",
                         url: "creatingfolderapi.php",
                         data: obj,
-                        success: successfunc2,
-                        error: OnError2,
+                        success: successCreate,
+                        error: errorCreate,
                     }
                     $.ajax(ajaxcall2);
-                    $('#id01').hide();
-                    let n1 = $(this).attr("name");
-                    let obj1={'p':n1};
-                    var ajaxcall3 = {
-                    type: "POST",
-                    dataType: "json",
-                    url: "showfolder.php",
-                    data: obj1,
-                    success: successfunc3,
-                    error: OnError3,
-                    }
-                    $.ajax(ajaxcall3);
             });
-        function successfunc2(res){
+        function successCreate(res){
             if(res=="samenNameNotAllowed"){
                 alert("Same name is not allowed...");
             }
-            console.log(res);
+            else{
+                $('#id01').hide();
+                    $('.folders .root').remove();
+                    $('.folders hr').remove();
+                    let n1 = $('.home .root').attr('name');
+                    folderDisplay(n1);
+            }
         }
-        function OnError2(res){
+        function errorCreate(res){
             if(res=="samenNameNotAllowed"){
                 alert("Same name is not allowed...");
             }
-            console.log(res);
-        }
-        function successfunc3(res){
-            successfunc1(res);
-        }
-        function OnError3(res){
-            OnError1(res);
         }
     </script>
 </body>
