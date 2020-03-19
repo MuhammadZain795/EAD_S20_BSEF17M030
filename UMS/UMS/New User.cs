@@ -84,22 +84,43 @@ namespace UMS
             }
             else if (addressBox.Text == "")
             {
-                MessageBox.Show("");
+                MessageBox.Show("Please enter your address.");
             }
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = @"DESKTOP-IND7HCK\SQLEXPRESS";
-            builder.InitialCatalog = "Assignment4";
-            builder.UserID = "sa";
-            builder.Password = "1234";
-            String connString = builder.ToString();
-            using (SqlConnection conn = new SqlConnection(connString))
+            else if (ageCount.Value == 0)
             {
-                conn.Open();
-                DateTime dt = DateTime.Now;
-                String query = @"Insert into dbo.users Values('"+nameText.Text+"', '"+loginText.Text+"', '"+passText.Text+"', '"+genderBox.Text+"', '"+addressBox.Text+"', '"+ageCount.Value+"', '"+nicBox.Text+"', '"+dobPicker.Value.Date+"', '"+cricket.Checked+"', '"+hockey.Checked+"', '"+chess.Checked+"', '"+pictureBox.ImageLocation+"', '"+dt+"'); ";
-                SqlCommand command = new SqlCommand(query, conn);
-                int res = command.ExecuteNonQuery();
+                MessageBox.Show("Please enter your age.");
             }
+            else if (!nicBox.MaskCompleted)
+            {
+                MessageBox.Show("Please enter your complete CNIC no.");
+            }
+            else
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = @"DESKTOP-IND7HCK\SQLEXPRESS";
+                builder.InitialCatalog = "Assignment4";
+                builder.UserID = "sa";
+                builder.Password = "1234";
+                String connString = builder.ToString();
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    DateTime dt = DateTime.Now;
+                    String query = @"Insert into dbo.users Values('" + nameText.Text + "', '" + loginText.Text + "', '" + passText.Text + "', '" + genderBox.Text + "', '" + addressBox.Text + "', '" + ageCount.Value + "', '" + nicBox.Text + "', '" + dobPicker.Value.Date + "', '" + cricket.Checked + "', '" + hockey.Checked + "', '" + chess.Checked + "', '" + pictureBox.ImageLocation + "', '" + dt + "'); ";
+                    SqlCommand command = new SqlCommand(query, conn);
+                    int res = command.ExecuteNonQuery();
+                }
+                this.Hide();
+                Home h = new Home();
+                h.Show();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainForm mF = new mainForm();
+            mF.Show();
         }
     }
 }
