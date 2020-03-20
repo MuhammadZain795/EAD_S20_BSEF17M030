@@ -17,5 +17,17 @@ namespace UMS
             InitializeComponent();
         }
 
+        private void Home_Load(object sender, EventArgs e)
+        {
+            welName.Text = "Welcome " + New_User.welcomeName;
+            pictureBox1.ImageLocation = New_User.pic;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainForm mf = new mainForm();
+            mf.Show();
+        }
     }
 }

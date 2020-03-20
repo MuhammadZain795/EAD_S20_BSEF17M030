@@ -12,6 +12,8 @@ namespace UMS
 {
     public partial class New_User : Form
     {
+        public static String welcomeName = "";
+        public static String pic = "";
         public New_User()
         {
             InitializeComponent();
@@ -105,14 +107,36 @@ namespace UMS
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
                     conn.Open();
-                    DateTime dt = DateTime.Now;
-                    String query = @"Insert into dbo.users Values('" + nameText.Text + "', '" + loginText.Text + "', '" + passText.Text + "', '" + genderBox.Text + "', '" + addressBox.Text + "', '" + ageCount.Value + "', '" + nicBox.Text + "', '" + dobPicker.Value.Date + "', '" + cricket.Checked + "', '" + hockey.Checked + "', '" + chess.Checked + "', '" + pictureBox.ImageLocation + "', '" + dt + "'); ";
-                    SqlCommand command = new SqlCommand(query, conn);
-                    int res = command.ExecuteNonQuery();
+                    String query1 = @"Select Login from dbo.users where Login='"+loginText.Text+"'";
+                    SqlCommand command = new SqlCommand(query1, conn);
+                    SqlDataReader login = command.ExecuteReader();
+                    if (login.Read() == false)
+                    {
+                        String query2 = @"Select Email from dbo.users where Email='" + emailText.Text + "'";
+                        SqlCommand command1 = new SqlCommand(query2, conn);
+                        SqlDataReader email = command1.ExecuteReader();
+                        if (email.Read() == false)
+                        {
+                            using (SqlConnection conn1 = new SqlConnection(connString))
+                            {
+                                conn1.Open();
+                                DateTime dt = DateTime.Now;
+                                String query = @"Insert into dbo.users Values('" + nameText.Text + "', '" + loginText.Text + "', '" + emailText.Text + "','" + passText.Text + "', '" + genderBox.Text + "', '" + addressBox.Text + "', '" + ageCount.Value + "', '" + nicBox.Text + "', '" + dobPicker.Value.Date + "', '" + cricket.Checked + "', '" + hockey.Checked + "', '" + chess.Checked + "', '" + pictureBox.ImageLocation + "', '" + dt + "'); ";
+                                SqlCommand command2 = new SqlCommand(query, conn1);
+                                int res = command2.ExecuteNonQuery();
+                            }
+                            welcomeName = nameText.Text;
+                            pic = pictureBox.ImageLocation;
+                            this.Hide();
+                            Home h = new Home();
+                            h.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("User already exist!!!");
+                    }
                 }
-                this.Hide();
-                Home h = new Home();
-                h.Show();
             }
         }
 
