@@ -1,4 +1,5 @@
 ﻿using System;
+using UMS_BAL;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -13,8 +14,9 @@ namespace UMS
     public partial class New_User : Form
     {
         public static String welcomeName = "";
+        public static String loginName = "";
+        public static String userPass = "";
         public static String pic = "";
-        public static int id;
         public New_User()
         {
             InitializeComponent();
@@ -22,8 +24,23 @@ namespace UMS
 
         private void New_User_Load(object sender, EventArgs e)
         {
-            genderBox.Items.Add('M');
-            genderBox.Items.Add('F');
+            if (Home.username != null)
+            {
+                nameText.Text = Home.username;
+                loginText.Text = Home.userlogin;
+                emailText.Text = Home.useremail;
+                passText.Text = Home.userpass;
+                addressBox.Text = Home.useradd;
+                ageCount.Value = Home.userAge;
+                dobPicker.Value = Home.userDOB.Date;
+                genderBox.Items.Add('M');
+                genderBox.Items.Add('F');
+            }
+            else
+            {
+                genderBox.Items.Add('M');
+                genderBox.Items.Add('F');
+            }
         }
 
         private void nameText_TextChanged(object sender, EventArgs e)
@@ -99,48 +116,24 @@ namespace UMS
             }
             else
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = @"DESKTOP-IND7HCK\SQLEXPRESS";
-                builder.InitialCatalog = "Assignment4";
-                builder.UserID = "sa";
-                builder.Password = "1234";
-                String connString = builder.ToString();
-                using (SqlConnection conn = new SqlConnection(connString))
+                var res = userBO.loginEmailValidation(loginText.Text, emailText.Text);
+                if (res == false)
                 {
-                    conn.Open();
-                    String query1 = @"Select Login from dbo.users where Login='"+loginText.Text+"'";
-                    SqlCommand command = new SqlCommand(query1, conn);
-                    SqlDataReader login = command.ExecuteReader();
-                    if (login.Read() == false)
-                    {
-                        String query2 = @"Select Email from dbo.users where Email='" + emailText.Text + "'";
-                        SqlCommand command1 = new SqlCommand(query2, conn);
-                        SqlDataReader email = command1.ExecuteReader();
-                        if (email.Read() == false)
-                        {
-                            using (SqlConnection conn1 = new SqlConnection(connString))
-                            {
-                                conn1.Open();
-                                DateTime dt = DateTime.Now;
-                                String query = @"Insert into dbo.users Values('" + nameText.Text + "', '" + loginText.Text + "', '" + emailText.Text + "','" + passText.Text + "', '" + genderBox.Text + "', '" + addressBox.Text + "', '" + ageCount.Value + "', '" + nicBox.Text + "', '" + dobPicker.Value.Date + "', '" + cricket.Checked + "', '" + hockey.Checked + "', '" + chess.Checked + "', '" + pictureBox.ImageLocation + "', '" + dt + "'); ";
-                                SqlCommand command2 = new SqlCommand(query, conn1);
-                                int res = command2.ExecuteNonQuery();
-                            }
-                            welcomeName = nameText.Text;
-                            pic = pictureBox.ImageLocation;
-                            this.Hide();
-                            Home h = new Home();
-                            h.Show();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("User already exist!!!");
-                    }
+                    var r = userBO.insertUser(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation);
+                    welcomeName = nameText.Text;
+                    userPass = passText.Text;
+                    pic = pictureBox.ImageLocation;
+                    loginName = loginText.Text;
+                    this.Hide();
+                    Home h = new Home();
+                    h.Show();
+                }
+                else
+                {
+                    MessageBox.Show("User already exist!!!");
                 }
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();

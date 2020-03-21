@@ -1,0 +1,8 @@
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\UMS BAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\UMS BAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\UMS DAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\UMS DAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.csprojAssemblyReference.cache
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.csproj.CopyComplete
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.pdb

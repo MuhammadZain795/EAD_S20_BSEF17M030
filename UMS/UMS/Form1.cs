@@ -26,7 +26,9 @@ namespace UMS
 
         private void btnExtisting_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Login log = new Login();
+            log.Show();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)

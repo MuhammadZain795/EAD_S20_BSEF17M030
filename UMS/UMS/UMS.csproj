@@ -58,6 +58,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="New User.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New User.resx">
       <DependentUpon>New User.cs</DependentUpon>
@@ -99,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UMS BAL\UMS BAL.csproj">
+      <Project>{5e5fa258-ce93-442f-aee8-8c41477a9b33}</Project>
+      <Name>UMS BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UMS DAL\UMS DAL.csproj">
+      <Project>{cc517e7c-d774-4d3d-ae3c-7872d15e48ac}</Project>
+      <Name>UMS DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

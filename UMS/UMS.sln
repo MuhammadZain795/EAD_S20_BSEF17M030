@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMS", "UMS\UMS.csproj", "{4F4F38F9-BB25-41A3-9BAF-A3C88CCCC937}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMS BAL", "UMS BAL\UMS BAL.csproj", "{5E5FA258-CE93-442F-AEE8-8C41477A9B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMS DAL", "UMS DAL\UMS DAL.csproj", "{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4F4F38F9-BB25-41A3-9BAF-A3C88CCCC937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F4F38F9-BB25-41A3-9BAF-A3C88CCCC937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F4F38F9-BB25-41A3-9BAF-A3C88CCCC937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5FA258-CE93-442F-AEE8-8C41477A9B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5FA258-CE93-442F-AEE8-8C41477A9B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5FA258-CE93-442F-AEE8-8C41477A9B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5FA258-CE93-442F-AEE8-8C41477A9B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
