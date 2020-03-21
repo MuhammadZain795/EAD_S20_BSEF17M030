@@ -14,6 +14,7 @@ namespace UMS
     {
         public static String welcomeName = "";
         public static String pic = "";
+        public static int id;
         public New_User()
         {
             InitializeComponent();
