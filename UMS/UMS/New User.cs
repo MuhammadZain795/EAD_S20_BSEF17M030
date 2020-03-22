@@ -85,48 +85,82 @@ namespace UMS
                 fromHomeForEdit();
             }
         }
-        private void fromHomeForEdit()
+        private Boolean validations()
         {
-            userBO.updateData(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation, Home.userID);
-        }
-        private void fromNewUser()
-        {
+            Boolean res = true;
             nameText.MaxLength = 20;
             if (nameText.Text == "")
             {
+                res = false;
                 MessageBox.Show("must enter your name");
             }
             else if (loginText.Text == "")
             {
+                res = false;
                 MessageBox.Show("Must enter your login");
             }
             else if (passText.Text == "")
             {
+                res = false;
                 MessageBox.Show("Must enter a strong password!!!");
             }
             else if (!(emailText.Text.Contains("@gmail.com")))
             {
+                res = false;
                 MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
             }
             else if (genderBox.Text == "")
             {
+                res = false;
                 MessageBox.Show("Please choose your gender...M/F");
             }
             else if (addressBox.Text == "")
             {
+                res = false;
                 MessageBox.Show("Please enter your address.");
             }
             else if (ageCount.Value == 0)
             {
+                res = false;
                 MessageBox.Show("Please enter your age.");
             }
             else if (!nicBox.MaskCompleted)
             {
+                res = false;
                 MessageBox.Show("Please enter your complete CNIC no.");
             }
-            else
+            return res;
+        }
+        private void fromHomeForEdit()
+        {
+            Boolean res = validations();
+            if (res == true)
             {
-                var res = userBO.loginEmailValidation(loginText.Text, emailText.Text);
+                var res1 = userBO.loginEmailValidationForExisting(loginText.Text,emailText.Text,Home.userID);
+                if(res1 == false)
+                {
+                    userBO.updateData(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation, Home.userID);
+                    welcomeName = nameText.Text;
+                    userPass = passText.Text;
+                    pic = pictureBox.ImageLocation;
+                    loginName = loginText.Text;
+                    this.Hide();
+                    Home h = new Home();
+                    h.fromNew();
+                    h.Show();
+                }
+                else
+                {
+                    MessageBox.Show("User already exist!!!");
+                }
+            }
+        }
+        private void fromNewUser()
+        {
+            Boolean res1 = validations();
+            if (res1 == true)
+            {
+                var res = userBO.loginEmailValidationForNew(loginText.Text, emailText.Text);
                 if (res == false)
                 {
                     var r = userBO.insertUser(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation);

@@ -11,7 +11,28 @@ namespace UMS_DAL
     {
 
         private static String connString = "Data Source=DESKTOP-IND7HCK\\SQLEXPRESS; Initial Catalog=Assignment4;User ID=sa;Password=1234";
-        public static Boolean loginEmailValidation(String login, String email)
+        public static Boolean loginEmailValidationForExisting(String login, String email,int ID)
+        {
+            SqlDataReader l, e;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query1 = @"Select Login from dbo.users where Login='" + login + "' and userID!='"+ID+"'";
+                SqlCommand command1 = new SqlCommand(query1, conn);
+                l = command1.ExecuteReader();
+                bool l1 = l.Read();
+                l.Close();
+                String query2 = @"Select Email from dbo.users where Email='" + email + "' and userID!='"+ID+"'";
+                SqlCommand command2 = new SqlCommand(query2, conn);
+                e = command2.ExecuteReader();
+                if (l1 == true || e.Read() == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        public static Boolean loginEmailValidationForNew(String login, String email)
         {
             SqlDataReader l,e;
             using (SqlConnection conn = new SqlConnection(connString))

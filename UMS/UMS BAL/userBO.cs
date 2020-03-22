@@ -9,9 +9,13 @@ namespace UMS_BAL
 {
     public static class userBO
     {
-        public static Boolean loginEmailValidation(String login, String email)
+        public static Boolean loginEmailValidationForNew(String login, String email)
         {
-            return userDAO.loginEmailValidation(login,email);
+            return userDAO.loginEmailValidationForNew(login,email);
+        }
+        public static Boolean loginEmailValidationForExisting(String login, String email,int ID)
+        {
+            return userDAO.loginEmailValidationForExisting(login, email,ID);
         }
         public static int insertUser(String name, String login, String pass, String email, String gender, String add, decimal age, String NIC, DateTime DOB, bool cri, bool hoc, bool chess, String image)
         {
