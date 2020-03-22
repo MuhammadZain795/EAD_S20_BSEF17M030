@@ -179,11 +179,26 @@ namespace UMS
                 }
             }
         }
+        private void cancelExisting()
+        {
+            Home h = new Home();
+            this.Hide();
+            h.fromLogin();
+            h.Show();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            mainForm mF = new mainForm();
-            mF.Show();
+            if (Home.cancelFromHome == true)
+            {
+                Home.cancelFromHome = false;
+                cancelExisting();
+            }
+            else
+            {
+                this.Hide();
+                mainForm mF = new mainForm();
+                mF.Show();
+            }
         }
     }
 }
