@@ -24,23 +24,8 @@ namespace UMS
 
         private void New_User_Load(object sender, EventArgs e)
         {
-            if (Home.username != null)
-            {
-                nameText.Text = Home.username;
-                loginText.Text = Home.userlogin;
-                emailText.Text = Home.useremail;
-                passText.Text = Home.userpass;
-                addressBox.Text = Home.useradd;
-                ageCount.Value = Home.userAge;
-                dobPicker.Value = Home.userDOB.Date;
-                genderBox.Items.Add('M');
-                genderBox.Items.Add('F');
-            }
-            else
-            {
-                genderBox.Items.Add('M');
-                genderBox.Items.Add('F');
-            }
+            genderBox.Items.Add('M');
+            genderBox.Items.Add('F');
         }
 
         private void nameText_TextChanged(object sender, EventArgs e)
@@ -68,7 +53,16 @@ namespace UMS
         {
 
         }
-
+        public void fromHome()
+        {
+            nameText.Text = Home.username;
+            loginText.Text = Home.userlogin;
+            emailText.Text = Home.useremail;
+            passText.Text = Home.userpass;
+            addressBox.Text = Home.useradd;
+            ageCount.Value = Home.userAge;
+            dobPicker.Value = Home.userDOB.Date;
+        }
         private void btnUpload_Click(object sender, EventArgs e)
         {
             var result = uploadFile.ShowDialog();
@@ -78,8 +72,24 @@ namespace UMS
                 pictureBox.Load(file);
             }
         }
-
         private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (mainForm.fromNew == true)
+            {
+                mainForm.fromNew = false;
+                fromNewUser();
+            }
+            else
+            {
+                Home.fromHome = false;
+                fromHomeForEdit();
+            }
+        }
+        private void fromHomeForEdit()
+        {
+            userBO.updateData(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation, Home.userID);
+        }
+        private void fromNewUser()
         {
             nameText.MaxLength = 20;
             if (nameText.Text == "")
@@ -126,6 +136,7 @@ namespace UMS
                     loginName = loginText.Text;
                     this.Hide();
                     Home h = new Home();
+                    h.fromNew();
                     h.Show();
                 }
                 else

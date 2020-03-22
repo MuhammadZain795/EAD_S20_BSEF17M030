@@ -44,6 +44,19 @@ namespace UMS_DAL
                 return res;
             }
         }
+        public static int updateData(String name, String login, String pass, String email, String gender, String add, decimal age, String NIC, DateTime DOB, bool cri, bool hoc, bool chess, String image, int userID)
+        {
+            using (SqlConnection conn1 = new SqlConnection(connString))
+            {
+                conn1.Open();
+                DateTime dt = DateTime.Now;
+                String query = @"Update dbo.users Set Name='"+name+"',Login='"+login+"',Password='"+pass+"',Email='"+email+"',Gender='"+gender+"',Address='"+add+"',Age='"+age+"',NIC='"+NIC+"',DOB='"+DOB+"',Cricket='"+cri+"',Hockey='"+hoc+"',Chess='"+chess+"',ImageName='"+image+"',CreatedOn='"+dt+"' where userID='"+userID+"'";
+                SqlCommand command2 = new SqlCommand(query, conn1);
+                int res = command2.ExecuteNonQuery();
+                return res;
+            }
+        }
+
         public struct userData
         {
             public String uname;
@@ -53,14 +66,15 @@ namespace UMS_DAL
             public String uadd;
             public DateTime udob;
             public decimal uage;
+            public int userID;
         }
-        public static userData UpdateData(String login, String pass)
+        public static userData toEditData(String login, String pass)
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
                 userData ud = new userData();
-                String query = @"Select Name,Login,Email,Password,Address,DOB,Age,NIC from dbo.users where Login='"+login+"'and Password='"+pass+"';";
+                String query = @"Select userID,Name,Login,Email,Password,Address,DOB,Age,NIC from dbo.users where Login='"+login+"'and Password='"+pass+"';";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader temp = command.ExecuteReader();
                 temp.Read();
@@ -71,6 +85,7 @@ namespace UMS_DAL
                 ud.uadd = temp["Address"].ToString();
                 ud.udob = Convert.ToDateTime(temp["DOB"]);
                 ud.uage = Convert.ToDecimal(temp["Age"]);
+                ud.userID = Convert.ToInt32(temp["userID"]);
                 return ud;
             }
         }

@@ -12,6 +12,7 @@ namespace UMS
 {
     public partial class mainForm : Form
     {
+        public static Boolean fromNew;
         public mainForm()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace UMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            fromNew = true;
             this.Hide();
             New_User newF = new New_User();
             newF.Show();

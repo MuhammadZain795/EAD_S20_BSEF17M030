@@ -20,16 +20,24 @@ namespace UMS
 
         private void Home_Load(object sender, EventArgs e)
         {
-            if (New_User.welcomeName != "")
-            {
-                welName.Text = "Welcome " + New_User.welcomeName;
-                pictureBox1.ImageLocation = New_User.pic;
-            }
-            else
-            {
-                welName.Text = "Welcome " + Login.username;
-                pictureBox1.ImageLocation = Login.userpic;
-            }
+           
+        }
+        public string userlogin1;
+        public string userpass1;
+        public void fromNew()
+        {
+            welName.Text = "Welcome " + New_User.welcomeName;
+            pictureBox1.ImageLocation = New_User.pic;
+            userlogin1 = New_User.loginName;
+            userpass1 = New_User.userPass;
+
+        }
+        public void fromLogin()
+        {
+            welName.Text = "Welcome " + Login.username;
+            pictureBox1.ImageLocation = Login.userpic;
+            userlogin1 = Login.userlogin;
+            userpass1 = Login.userpass;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -45,40 +53,24 @@ namespace UMS
         public static String useradd;
         public static DateTime userDOB;
         public static Decimal userAge;
+        public static int userID;
+        public static Boolean fromHome;
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (New_User.loginName!="")
-            {
-                var res = userBO.UpdateData(New_User.loginName, New_User.userPass);
-                username = res.uname;
-                userlogin = res.ulog;
-                userpass = res.upass;
-                useremail = res.uemail;
-                userDOB = res.udob;
-                useradd = res.uadd;
-                userAge = res.uage;
-                this.Hide();
-
-
-                New_User nU = new New_User();
-                nU.Show();
-            }
-            else
-            {
-                var res = userBO.UpdateData(Login.userlogin,Login.userpass);
-                username = res.uname;
-                userlogin = res.ulog;
-                userpass = res.upass;
-                useremail = res.uemail;
-                userDOB = res.udob;
-                useradd = res.uadd;
-                userAge = res.uage;
-                this.Hide();
-
-
-                New_User nU = new New_User();
-                nU.Show();
-            }
+            var res = userBO.toEditData(userlogin1, userpass1);
+            username = res.uname;
+            userlogin = res.ulog;
+            userpass = res.upass;
+            useremail = res.uemail;
+            userDOB = res.udob;
+            useradd = res.uadd;
+            userAge = res.uage;
+            userID = res.userID;
+            fromHome = true;
+            this.Hide();
+            New_User nU = new New_User();
+            nU.fromHome();
+            nU.Show();
         }
     }
 }

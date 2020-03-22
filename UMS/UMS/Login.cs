@@ -39,6 +39,7 @@ namespace UMS
                 userpic = userBO.userpic;
                 this.Hide();
                 Home h = new Home();
+                h.fromLogin();
                 h.Show();
             }
             else

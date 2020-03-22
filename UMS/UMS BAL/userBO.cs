@@ -18,9 +18,13 @@ namespace UMS_BAL
             int res = userDAO.insertUser(name, login, pass, email, gender, add, age, NIC, DOB, cri, hoc, chess, image);
             return res;
         }
-        public static userDAO.userData UpdateData(String login, String pass)
+        public static void updateData(String name, String login, String pass, String email, String gender, String add, decimal age, String NIC, DateTime DOB, bool cri, bool hoc, bool chess, String image, int userID)
         {
-            return userDAO.UpdateData(login, pass);
+            userDAO.updateData(name, login, pass, email, gender, add, age, NIC, DOB, cri, hoc, chess, image, userID);
+        }
+        public static userDAO.userData toEditData(String login, String pass)
+        {
+            return userDAO.toEditData(login, pass);
         }
         public static String username;
         public static String userpic;
