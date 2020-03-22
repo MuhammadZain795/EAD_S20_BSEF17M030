@@ -51,7 +51,8 @@ namespace UMS_BAL
         public static void loadUsersData()
         {
             userDAO.loadUsersData();
-            for(int i = 0; i <= userDAO.idList.Count; i++)
+            int count = userDAO.idList.Count;
+            for (int i = 0; i < count; i++)
             {
                 idList.AddLast(userDAO.idList.First.Value);
                 userDAO.idList.RemoveFirst();

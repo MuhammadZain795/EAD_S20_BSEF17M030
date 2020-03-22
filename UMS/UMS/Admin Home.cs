@@ -32,7 +32,8 @@ namespace UMS
         {
             int pointY = 95;
             userBO.loadUsersData();
-            for(int j = 0; j <= userBO.idList.Count; j++)
+            int count = userBO.idList.Count;
+            for (int j = 0; j < count; j++)
             {
                 int pointX = 64;
                 int changeX = 75;
