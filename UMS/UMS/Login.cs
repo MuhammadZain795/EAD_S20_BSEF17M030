@@ -28,6 +28,7 @@ namespace UMS
         public static String userpic;
         public static String userlogin;
         public static String userpass;
+        public static Boolean cancelFromLogin;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Boolean res = userBO.loginUser(loginText.Text,passText.Text);
@@ -39,6 +40,7 @@ namespace UMS
                 userpic = userBO.userpic;
                 this.Hide();
                 Home h = new Home();
+                cancelFromLogin = true;
                 h.fromLogin();
                 h.Show();
             }
@@ -46,6 +48,12 @@ namespace UMS
             {
                 MessageBox.Show("Login or Password is incorrect!!!");
             }
+        }
+
+        private void passText_TextChanged(object sender, EventArgs e)
+        {
+            passText.PasswordChar = '*';
+            passText.MaxLength = 14;
         }
     }
 }

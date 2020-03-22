@@ -35,7 +35,9 @@ namespace UMS
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Admin a = new Admin();
+            a.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -90,6 +90,7 @@
             this.passText.Name = "passText";
             this.passText.Size = new System.Drawing.Size(152, 26);
             this.passText.TabIndex = 5;
+            this.passText.TextChanged += new System.EventHandler(this.passText_TextChanged);
             // 
             // emailText
             // 

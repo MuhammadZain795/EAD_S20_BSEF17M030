@@ -183,12 +183,25 @@ namespace UMS
         {
             Home h = new Home();
             this.Hide();
+            h.fromNew();
+            h.Show();
+        }
+        private void cancelExistingFromLogin()
+        {
+            Home h = new Home();
+            this.Hide();
             h.fromLogin();
             h.Show();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (Home.cancelFromHome == true)
+            if(Home.cancelFromHome==true && Login.cancelFromLogin == true)
+            {
+                Home.cancelFromHome = false;
+                Login.cancelFromLogin = false;
+                cancelExistingFromLogin();
+            }
+            else if(Home.cancelFromHome == true)
             {
                 Home.cancelFromHome = false;
                 cancelExisting();

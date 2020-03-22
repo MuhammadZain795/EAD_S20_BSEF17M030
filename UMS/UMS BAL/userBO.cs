@@ -39,5 +39,31 @@ namespace UMS_BAL
             userpic = userDAO.userpic;
             return res;
         }
+        public static Boolean verifyAdmin(String login,String pass)
+        {
+            return userDAO.verifyAdmin(login, pass);
+        }
+        public static LinkedList<Int32> idList = new LinkedList<Int32>();
+        public static LinkedList<String> nameList = new LinkedList<string>();
+        public static LinkedList<String> loginList = new LinkedList<string>();
+        public static LinkedList<String> addressList = new LinkedList<string>();
+        public static LinkedList<Decimal> ageList = new LinkedList<Decimal>();
+        public static void loadUsersData()
+        {
+            userDAO.loadUsersData();
+            for(int i = 0; i <= userDAO.idList.Count; i++)
+            {
+                idList.AddLast(userDAO.idList.First.Value);
+                userDAO.idList.RemoveFirst();
+                nameList.AddLast(userDAO.nameList.First.Value);
+                userDAO.nameList.RemoveFirst();
+                loginList.AddLast(userDAO.loginList.First.Value);
+                userDAO.loginList.RemoveFirst();
+                addressList.AddLast(userDAO.addressList.First.Value);
+                userDAO.addressList.RemoveFirst();
+                ageList.AddLast(userDAO.ageList.First.Value);
+                userDAO.ageList.RemoveFirst();
+            }
+        }
     }
 }

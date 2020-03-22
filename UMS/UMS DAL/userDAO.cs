@@ -129,5 +129,40 @@ namespace UMS_DAL
                 return false;
             }
         }
+        public static Boolean verifyAdmin(String login,String pass)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query = @"Select * from dbo.Admin where Login='" + login + "'and Password='" + pass + "';";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader temp = command.ExecuteReader();
+                return temp.Read();
+            }
+        }
+        public static LinkedList<Int32> idList = new LinkedList<Int32>();
+        public static LinkedList<String> nameList = new LinkedList<string>();
+        public static LinkedList<String> loginList = new LinkedList<string>();
+        public static LinkedList<String> addressList = new LinkedList<string>();
+        public static LinkedList<Decimal> ageList = new LinkedList<Decimal>();
+        public static void loadUsersData()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query1 = @"Select userID,Name,Login,Address,Age from dbo.users;";
+                SqlCommand command1 = new SqlCommand(query1, conn);
+                SqlDataReader temp1 = command1.ExecuteReader();
+                while (temp1.Read())
+                {
+                    idList.AddLast((Int32)temp1["userID"]);
+                    nameList.AddLast((String)temp1["Name"]);
+                    loginList.AddLast((String)temp1["Login"]);
+                    addressList.AddLast((String)temp1["Address"]);
+                    ageList.AddLast(Convert.ToDecimal(temp1["Age"]));
+                }
+                
+            }
+        }
     }
 }
