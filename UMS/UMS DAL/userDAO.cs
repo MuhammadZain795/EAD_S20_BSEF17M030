@@ -171,18 +171,23 @@ namespace UMS_DAL
                 conn.Open();
                 String query1 = @"Select Email from dbo.users where Login='"+login+"' ;";
                 SqlCommand command1 = new SqlCommand(query1, conn);
-                String temp1 = command1.ExecuteScalar().ToString();
-                return temp1;
+                SqlDataReader temp1 = command1.ExecuteReader();
+                if (temp1.Read() == true) 
+                {
+                    String mail = temp1["Email"].ToString();
+                    return mail;
+                }
+                return "Null";
             }
         }
-        public static void updatePass(String login)
+        public static void updatePass(String login, String pass)
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                String query1 = @"Update Password from dbo.users where Login='" + login + "'";
+                String query1 = @"Update dbo.users Set Password='"+pass+"' where Login='" + login + "'";
                 SqlCommand command1 = new SqlCommand(query1, conn);
-                SqlDataReader l = command1.ExecuteReader();
+                int l = command1.ExecuteNonQuery();
             }
         }
     }

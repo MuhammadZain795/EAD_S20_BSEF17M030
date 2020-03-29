@@ -103,21 +103,29 @@ namespace UMS
             {
                 Random random = new Random();
                 int r = random.Next(1, 10);
-                Boolean res = sendEmail(userBO.getMail(loginText.Text), "Reset Password Code", r.ToString());
-                if (res == true)
+                String email = userBO.getMail(loginText.Text);
+                if (email == "Null")
                 {
-                    String code = Interaction.InputBox("Confirm");
-                    if (code == r.ToString())
+                    MessageBox.Show("Login Invalid.");
+                }
+                else 
+                {
+                    Boolean res = sendEmail(email, "Reset Password Code", r.ToString());
+                    if (res == true)
                     {
-                        String pass = Interaction.InputBox("Reset");
-                        userBO.updatePass(pass);
-                        MessageBox.Show(pass);
+                        String code = Interaction.InputBox("Confirm");
+                        if (code == r.ToString())
+                        {
+                            String pass = Interaction.InputBox("Reset");
+                            userBO.updatePass(loginText.Text, pass);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email not sent.");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Email not sent.");
-                }
+                
             }
         }
     }

@@ -70,9 +70,9 @@ namespace UMS_BAL
         {
             return userDAO.getMail(login);
         }
-        public static void updatePass(String pass)
+        public static void updatePass(String login, String pass)
         {
-            userDAO.getMail(pass);
+            userDAO.updatePass(login, pass);
         }
     }
 }

@@ -104,11 +104,11 @@ namespace UMS
                 res = false;
                 MessageBox.Show("Must enter a strong password!!!");
             }
-            else if (!(emailText.Text.Contains("@gmail.com")))
-            {
-                res = false;
-                MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
-            }
+            //else if (!(emailText.Text.Contains("@gmail.com")))
+            //{
+            //    res = false;
+            //    MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
+            //}
             else if (genderBox.Text == "")
             {
                 res = false;
