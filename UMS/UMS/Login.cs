@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
+using System.Net.Mail;
+using System.Net;
 using System.Windows.Forms;
 using UMS_BAL;
 
@@ -49,11 +52,73 @@ namespace UMS
                 MessageBox.Show("Login or Password is incorrect!!!");
             }
         }
-
         private void passText_TextChanged(object sender, EventArgs e)
         {
             passText.PasswordChar = '*';
             passText.MaxLength = 14;
+        }
+        public static Boolean sendEmail(String toEmail, String subject, String body)
+        {
+            try
+            {
+                String fromEmail = "EAD.SEMorning@gmail.com";
+                String fromPassword = "SEMorning2017";
+                String fromName = "EAD";
+                MailAddress fromAddress = new MailAddress(fromEmail, fromName);
+                MailAddress toAddress = new MailAddress(toEmail);
+                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+
+                })
+                {
+                    smtp.Send(message);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            if (loginText.Text == "")
+            {
+                MessageBox.Show("Must give login.");
+            }
+            else
+            {
+                Random random = new Random();
+                int r = random.Next(1, 10);
+                Boolean res = sendEmail(userBO.getMail(loginText.Text), "Reset Password Code", r.ToString());
+                if (res == true)
+                {
+                    String code = Interaction.InputBox("Confirm");
+                    if (code == r.ToString())
+                    {
+                        String pass = Interaction.InputBox("Reset");
+                        userBO.updatePass(pass);
+                        MessageBox.Show(pass);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Email not sent.");
+                }
+            }
         }
     }
 }

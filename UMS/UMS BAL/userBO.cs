@@ -66,5 +66,13 @@ namespace UMS_BAL
                 userDAO.ageList.RemoveFirst();
             }
         }
+        public static String getMail(String login)
+        {
+            return userDAO.getMail(login);
+        }
+        public static void updatePass(String pass)
+        {
+            userDAO.getMail(pass);
+        }
     }
 }

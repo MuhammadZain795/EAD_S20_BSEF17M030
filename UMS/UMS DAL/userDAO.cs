@@ -164,5 +164,26 @@ namespace UMS_DAL
                 
             }
         }
+        public static String getMail(String login)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query1 = @"Select Email from dbo.users where Login='"+login+"' ;";
+                SqlCommand command1 = new SqlCommand(query1, conn);
+                String temp1 = command1.ExecuteScalar().ToString();
+                return temp1;
+            }
+        }
+        public static void updatePass(String login)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query1 = @"Update Password from dbo.users where Login='" + login + "'";
+                SqlCommand command1 = new SqlCommand(query1, conn);
+                SqlDataReader l = command1.ExecuteReader();
+            }
+        }
     }
 }
