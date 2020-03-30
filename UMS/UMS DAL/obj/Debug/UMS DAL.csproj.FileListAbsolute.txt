@@ -3,3 +3,6 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\UMS DAL.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.csprojAssemblyReference.cache
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDTO.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDTO.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.csproj.CopyComplete

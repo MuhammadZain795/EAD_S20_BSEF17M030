@@ -6,3 +6,5 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.csp
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.csproj.CopyComplete
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\obj\Debug\UMS BAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\userDTO.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\userDTO.pdb

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UMS;
 
 namespace UMS_DAL
 {
@@ -140,12 +142,12 @@ namespace UMS_DAL
                 return temp.Read();
             }
         }
-        public static LinkedList<Int32> idList = new LinkedList<Int32>();
-        public static LinkedList<String> nameList = new LinkedList<string>();
-        public static LinkedList<String> loginList = new LinkedList<string>();
-        public static LinkedList<String> addressList = new LinkedList<string>();
-        public static LinkedList<Decimal> ageList = new LinkedList<Decimal>();
-        public static void loadUsersData()
+        public static List<Int32> idList = new List<Int32>();
+        public static List<String> nameList = new List<string>();
+        public static List<String> loginList = new List<string>();
+        public static List<String> addressList = new List<string>();
+        public static List<Decimal> ageList = new List<Decimal>();
+        public static List<userDTO> loadUsersData()
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -153,15 +155,23 @@ namespace UMS_DAL
                 String query1 = @"Select userID,Name,Login,Address,Age from dbo.users;";
                 SqlCommand command1 = new SqlCommand(query1, conn);
                 SqlDataReader temp1 = command1.ExecuteReader();
+                List<UMS.userDTO> userDTOs = new List<UMS.userDTO>();
                 while (temp1.Read())
                 {
-                    idList.AddLast((Int32)temp1["userID"]);
-                    nameList.AddLast((String)temp1["Name"]);
-                    loginList.AddLast((String)temp1["Login"]);
-                    addressList.AddLast((String)temp1["Address"]);
-                    ageList.AddLast(Convert.ToDecimal(temp1["Age"]));
+                    idList.Add((Int32)temp1["userID"]);
+                    nameList.Add((String)temp1["Name"]);
+                    loginList.Add((String)temp1["Login"]);
+                    addressList.Add((String)temp1["Address"]);
+                    ageList.Add(Convert.ToDecimal(temp1["Age"]));
                 }
-                
+                var list = new userDTO();
+                list.idList = idList;
+                list.nameList = nameList;
+                list.loginList = loginList;
+                list.addressList = addressList;
+                list.ageList = ageList;
+                userDTOs.Add(list);
+                return userDTOs;
             }
         }
         public static String getMail(String login)
@@ -190,5 +200,16 @@ namespace UMS_DAL
                 int l = command1.ExecuteNonQuery();
             }
         }
+        //public static DataTable userDetail()
+        //{
+        //    using (SqlConnection conn = new SqlConnection(connString))
+        //    {
+        //        conn.Open();
+        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select * from dbo.users;", conn);
+        //        DataTable dataTable = new DataTable();
+        //        sqlDataAdapter.Fill(dataTable);
+        //        return dataTable;
+        //    }
+        //}
     }
 }

@@ -1,0 +1,5 @@
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\bin\Debug\userDTO.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\bin\Debug\userDTO.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\obj\Debug\userDTO.csprojAssemblyReference.cache
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\obj\Debug\userDTO.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\obj\Debug\userDTO.pdb
