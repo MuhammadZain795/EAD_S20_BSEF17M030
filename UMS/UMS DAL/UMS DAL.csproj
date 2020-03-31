@@ -46,6 +46,14 @@
     <Compile Include="userDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataForAdminToEdit\DataForAdminToEdit.csproj">
+      <Project>{97170aff-5f2f-451c-b132-73f894d6004f}</Project>
+      <Name>DataForAdminToEdit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\userDataList\userDataList.csproj">
+      <Project>{4231e8f3-3a5b-4220-ab79-3982f846c011}</Project>
+      <Name>userDataList</Name>
+    </ProjectReference>
     <ProjectReference Include="..\userDTO\userDTO.csproj">
       <Project>{4e6dcd2c-f83d-46e4-8c8b-430253a7a995}</Project>
       <Name>userDTO</Name>

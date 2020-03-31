@@ -53,6 +53,17 @@ namespace UMS
         {
 
         }
+        public void fromAdmin(Int32 id)
+        {
+            Home.userID = id;
+            DataForAdminToEdit.Class1 class1 = new DataForAdminToEdit.Class1();
+            class1 = userBO.getDataForAdminEdit(id);
+            nameText.Text = class1.Name;
+            loginText.Text = class1.Login;
+            passText.Text = class1.Password;
+            addressBox.Text = class1.Address;
+            ageCount.Value = class1.Age;
+        }
         public void fromHome()
         {
             nameText.Text = Home.username;
@@ -79,6 +90,11 @@ namespace UMS
                 mainForm.fromNew = false;
                 fromNewUser();
             }
+            else if (Admin_Home.fromAdmin == true)
+            {
+                Admin_Home.fromAdmin = false;
+                fromHomeForEdit(); 
+            }
             else
             {
                 Home.fromHome = false;
@@ -104,11 +120,11 @@ namespace UMS
                 res = false;
                 MessageBox.Show("Must enter a strong password!!!");
             }
-            //else if (!(emailText.Text.Contains("@gmail.com")))
-            //{
-            //    res = false;
-            //    MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
-            //}
+            else if (!(emailText.Text.Contains("@gmail.com") || !(emailText.Text.Contains("@pucit.edu.pk"))))
+            {
+                res = false;
+                MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
+            }
             else if (genderBox.Text == "")
             {
                 res = false;
@@ -137,8 +153,8 @@ namespace UMS
             Boolean res = validations();
             if (res == true)
             {
-                var res1 = userBO.loginEmailValidationForExisting(loginText.Text,emailText.Text,Home.userID);
-                if(res1 == false)
+                Boolean res1 = userBO.loginEmailValidationForExisting(loginText.Text, emailText.Text, Home.userID);
+                if (res1 == false)
                 {
                     userBO.updateData(nameText.Text, loginText.Text, passText.Text, emailText.Text, genderBox.Text, addressBox.Text, ageCount.Value, nicBox.Text, dobPicker.Value.Date, cricket.Checked, hockey.Checked, chess.Checked, pictureBox.ImageLocation, Home.userID);
                     welcomeName = nameText.Text;
@@ -146,9 +162,18 @@ namespace UMS
                     pic = pictureBox.ImageLocation;
                     loginName = loginText.Text;
                     this.Hide();
-                    Home h = new Home();
-                    h.fromNew();
-                    h.Show();
+                    if (Admin_Home.fromAdmin == false)
+                    {
+                        this.Hide();
+                        Admin_Home admin_Home = new Admin_Home();
+                        admin_Home.Show();
+                    }
+                    else
+                    {
+                        Home h = new Home();
+                        h.fromNew();
+                        h.Show();
+                    }
                 }
                 else
                 {
@@ -201,6 +226,13 @@ namespace UMS
                 Home.cancelFromHome = false;
                 Login.cancelFromLogin = false;
                 cancelExistingFromLogin();
+            }
+            else if (Admin_Home.cancelFromAdmin == true)
+            {
+                Admin_Home.cancelFromAdmin = false;
+                Admin_Home admin_Home = new Admin_Home();
+                this.Hide();
+                admin_Home.Show();
             }
             else if(Home.cancelFromHome == true)
             {

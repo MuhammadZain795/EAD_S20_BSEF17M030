@@ -37,5 +37,12 @@ namespace UMS
                 MessageBox.Show("Login or Password is incorrect!!!");
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainForm mainForm = new mainForm();
+            mainForm.Show();
+        }
     }
 }

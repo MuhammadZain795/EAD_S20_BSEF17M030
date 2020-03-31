@@ -6,3 +6,7 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDTO.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDTO.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\obj\Debug\UMS DAL.csproj.CopyComplete
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDataList.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\userDataList.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\DataForAdminToEdit.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS DAL\bin\Debug\DataForAdminToEdit.pdb

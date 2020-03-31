@@ -8,10 +8,10 @@ namespace UMS
 {
     public class userDTO
     {
-        public List<Int32> idList = new List<Int32>();
-        public List<String> nameList = new List<string>();
-        public List<String> loginList = new List<string>();
-        public List<String> addressList = new List<string>();
-        public List<Decimal> ageList = new List<Decimal>();
+        public Int32  UserID{ get; set; }
+        public String Name { get; set; }
+        public String Login { get;set; }
+        public String Address { get; set; }
+        public Decimal Age { get; set; }
     }
 }

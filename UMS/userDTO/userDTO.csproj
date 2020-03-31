@@ -44,5 +44,11 @@
     <Compile Include="userDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\userDataList\userDataList.csproj">
+      <Project>{4231e8f3-3a5b-4220-ab79-3982f846c011}</Project>
+      <Name>userDataList</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

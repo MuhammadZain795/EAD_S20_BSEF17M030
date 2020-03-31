@@ -47,17 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin Home.Designer.cs">
-      <DependentUpon>Admin Home.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Home.Designer.cs">
+      <DependentUpon>Admin_Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -85,11 +85,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Admin Home.resx">
-      <DependentUpon>Admin Home.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Home.resx">
+      <DependentUpon>Admin_Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -112,6 +112,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\UMS_BAL.userBO.datasource" />
+    <None Include="Properties\DataSources\UMS_DAL.userDAO+userData.datasource" />
+    <None Include="Properties\DataSources\UMS_DAL.userDAO.datasource" />
+    <None Include="Properties\DataSources\userDTO.datasource" />
+    <None Include="Properties\DataSources\userDTO.userDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,6 +134,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataForAdminToEdit\DataForAdminToEdit.csproj">
+      <Project>{97170aff-5f2f-451c-b132-73f894d6004f}</Project>
+      <Name>DataForAdminToEdit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UMS BAL\UMS BAL.csproj">
       <Project>{5e5fa258-ce93-442f-aee8-8c41477a9b33}</Project>
       <Name>UMS BAL</Name>
@@ -136,6 +145,10 @@
     <ProjectReference Include="..\UMS DAL\UMS DAL.csproj">
       <Project>{CC517E7C-D774-4D3D-AE3C-7872D15E48AC}</Project>
       <Name>UMS DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\userDataList\userDataList.csproj">
+      <Project>{4231e8f3-3a5b-4220-ab79-3982f846c011}</Project>
+      <Name>userDataList</Name>
     </ProjectReference>
     <ProjectReference Include="..\userDTO\userDTO.csproj">
       <Project>{4e6dcd2c-f83d-46e4-8c8b-430253a7a995}</Project>

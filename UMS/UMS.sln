@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMS DAL", "UMS DAL\UMS DAL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userDTO", "userDTO\userDTO.csproj", "{4E6DCD2C-F83D-46E4-8C8B-430253A7A995}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userDataList", "userDataList\userDataList.csproj", "{4231E8F3-3A5B-4220-AB79-3982F846C011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataForAdminToEdit", "DataForAdminToEdit\DataForAdminToEdit.csproj", "{97170AFF-5F2F-451C-B132-73F894D6004F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{4E6DCD2C-F83D-46E4-8C8B-430253A7A995}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6DCD2C-F83D-46E4-8C8B-430253A7A995}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E6DCD2C-F83D-46E4-8C8B-430253A7A995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4231E8F3-3A5B-4220-AB79-3982F846C011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4231E8F3-3A5B-4220-AB79-3982F846C011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4231E8F3-3A5B-4220-AB79-3982F846C011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4231E8F3-3A5B-4220-AB79-3982F846C011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97170AFF-5F2F-451C-B132-73F894D6004F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97170AFF-5F2F-451C-B132-73F894D6004F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97170AFF-5F2F-451C-B132-73F894D6004F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97170AFF-5F2F-451C-B132-73F894D6004F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

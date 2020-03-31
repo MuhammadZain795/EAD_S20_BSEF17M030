@@ -12,11 +12,11 @@ namespace UMS_BAL
     {
         public static Boolean loginEmailValidationForNew(String login, String email)
         {
-            return userDAO.loginEmailValidationForNew(login, email);
+            return userDAO.loginEmailValidationForNew(login,email);
         }
-        public static Boolean loginEmailValidationForExisting(String login, String email, int ID)
+        public static Boolean loginEmailValidationForExisting(String login, String email,int ID)
         {
-            return userDAO.loginEmailValidationForExisting(login, email, ID);
+            return userDAO.loginEmailValidationForExisting(login, email,ID);
         }
         public static int insertUser(String name, String login, String pass, String email, String gender, String add, decimal age, String NIC, DateTime DOB, bool cri, bool hoc, bool chess, String image)
         {
@@ -40,7 +40,7 @@ namespace UMS_BAL
             userpic = userDAO.userpic;
             return res;
         }
-        public static Boolean verifyAdmin(String login, String pass)
+        public static Boolean verifyAdmin(String login,String pass)
         {
             return userDAO.verifyAdmin(login, pass);
         }
@@ -49,25 +49,9 @@ namespace UMS_BAL
         public static LinkedList<String> loginList = new LinkedList<string>();
         public static LinkedList<String> addressList = new LinkedList<string>();
         public static LinkedList<Decimal> ageList = new LinkedList<Decimal>();
-        public static List<UMS.userDTO> loadUsersData()
+        public static userDataList.userDataClass loadUsersData()
         {
             return userDAO.loadUsersData();
-
-            //userDAO.loadUsersData();
-            //int count = userDAO.idList.Count;
-            //for (int i = 0; i < count; i++)
-            //{
-            //    idList.AddLast(userDAO.idList.First.Value);
-            //    userDAO.idList.RemoveFirst();
-            //    nameList.AddLast(userDAO.nameList.First.Value);
-            //    userDAO.nameList.RemoveFirst();
-            //    loginList.AddLast(userDAO.loginList.First.Value);
-            //    userDAO.loginList.RemoveFirst();
-            //    addressList.AddLast(userDAO.addressList.First.Value);
-            //    userDAO.addressList.RemoveFirst();
-            //    ageList.AddLast(userDAO.ageList.First.Value);
-            //    userDAO.ageList.RemoveFirst();
-            //}
         }
         public static String getMail(String login)
         {
@@ -77,10 +61,13 @@ namespace UMS_BAL
         {
             userDAO.updatePass(login, pass);
         }
-        //    public static DataTable userDetail()
-        //    {
-        //        return userDAO.userDetail();
-        //    }
-        //}
+        public static DataForAdminToEdit.Class1 getDataForAdminEdit(Int32 id)
+        {
+            return userDAO.getDataForAdminEdit(id);
+        }
+        public static DataTable userDetail()
+        {
+            return userDAO.userDetail();
+        }
     }
 }

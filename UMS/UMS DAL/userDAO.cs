@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UMS;
 
 namespace UMS_DAL
 {
@@ -79,7 +78,6 @@ namespace UMS_DAL
                 return res;
             }
         }
-
         public struct userData
         {
             public String uname;
@@ -145,17 +143,18 @@ namespace UMS_DAL
         public static List<Int32> idList = new List<Int32>();
         public static List<String> nameList = new List<string>();
         public static List<String> loginList = new List<string>();
+        public static List<String> passlist = new List<string>();
         public static List<String> addressList = new List<string>();
         public static List<Decimal> ageList = new List<Decimal>();
-        public static List<userDTO> loadUsersData()
+        public static List<DateTime> doblist = new List<DateTime>();
+        public static userDataList.userDataClass loadUsersData()
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                String query1 = @"Select userID,Name,Login,Address,Age from dbo.users;";
+                String query1 = @"Select userID,Name,Login,Password,Address,Age,DOB from dbo.users;";
                 SqlCommand command1 = new SqlCommand(query1, conn);
                 SqlDataReader temp1 = command1.ExecuteReader();
-                List<UMS.userDTO> userDTOs = new List<UMS.userDTO>();
                 while (temp1.Read())
                 {
                     idList.Add((Int32)temp1["userID"]);
@@ -163,15 +162,18 @@ namespace UMS_DAL
                     loginList.Add((String)temp1["Login"]);
                     addressList.Add((String)temp1["Address"]);
                     ageList.Add(Convert.ToDecimal(temp1["Age"]));
+                    passlist.Add((String)temp1["Password"]);
+                    doblist.Add(Convert.ToDateTime(temp1["DOB"]));
                 }
-                var list = new userDTO();
-                list.idList = idList;
-                list.nameList = nameList;
-                list.loginList = loginList;
-                list.addressList = addressList;
-                list.ageList = ageList;
-                userDTOs.Add(list);
-                return userDTOs;
+                var listOfListsOfData = new userDataList.userDataClass();
+                listOfListsOfData.idlist = idList;
+                listOfListsOfData.namelist = nameList;
+                listOfListsOfData.loginlist = loginList;
+                listOfListsOfData.passlist = passlist;
+                listOfListsOfData.addresslist = addressList;
+                listOfListsOfData.agelist = ageList;
+                listOfListsOfData.doblist = doblist;
+                return listOfListsOfData;
             }
         }
         public static String getMail(String login)
@@ -200,16 +202,34 @@ namespace UMS_DAL
                 int l = command1.ExecuteNonQuery();
             }
         }
-        //public static DataTable userDetail()
-        //{
-        //    using (SqlConnection conn = new SqlConnection(connString))
-        //    {
-        //        conn.Open();
-        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select * from dbo.users;", conn);
-        //        DataTable dataTable = new DataTable();
-        //        sqlDataAdapter.Fill(dataTable);
-        //        return dataTable;
-        //    }
-        //}
+        public static DataForAdminToEdit.Class1  getDataForAdminEdit(Int32 id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                DataForAdminToEdit.Class1 ud = new DataForAdminToEdit.Class1();
+                String query = @"Select Name,Login,Password,Address,Age from dbo.users where userID='" + id + "';";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader temp = command.ExecuteReader();
+                temp.Read();
+                ud.Name = temp["Name"].ToString();
+                ud.Login = temp["Login"].ToString();
+                ud.Password = temp["Password"].ToString();
+                ud.Address = temp["Address"].ToString();
+                ud.Age = Convert.ToDecimal(temp["Age"]);
+                return ud;
+            }
+        }
+        public static DataTable userDetail()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select userID,Name,login,address,Age from dbo.users", conn);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
     }
 }
