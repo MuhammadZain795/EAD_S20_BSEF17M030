@@ -54,8 +54,8 @@ namespace UMS
         public static DateTime userDOB;
         public static Decimal userAge;
         public static int userID;
-        public static Boolean fromHome;
-        public static Boolean cancelFromHome;
+        public static Boolean fromHome = true;
+        public static Boolean cancelFromHome = true;
         private void btnEdit_Click(object sender, EventArgs e)
         {
             var res = userBO.toEditData(userlogin1, userpass1);
@@ -67,8 +67,8 @@ namespace UMS
             useradd = res.uadd;
             userAge = res.uage;
             userID = res.userID;
-            fromHome = true;
-            cancelFromHome = true;
+            fromHome = false;
+            cancelFromHome = false;
             this.Hide();
             New_User nU = new New_User();
             nU.fromHome();

@@ -40,14 +40,14 @@ namespace UMS
                 userDTOBindingSource.Add(new userDTO() { UserID = userDataClass.idlist[i], Name = userDataClass.namelist[i], Login = userDataClass.loginlist[i], Address = userDataClass.addresslist[i], Age = userDataClass.agelist[i] });
             }
         } 
-        public static Boolean fromAdmin;
-        public static Boolean cancelFromAdmin;
+        public static Boolean fromAdmin = true;
+        public static Boolean cancelFromAdmin =true;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
-                fromAdmin = true;
-                cancelFromAdmin = true;
+                fromAdmin = false;
+                cancelFromAdmin = false;
                 New_User nu = new New_User();
                 nu.fromAdmin(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].FormattedValue));
                 nu.Show();

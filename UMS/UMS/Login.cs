@@ -31,7 +31,7 @@ namespace UMS
         public static String userpic;
         public static String userlogin;
         public static String userpass;
-        public static Boolean cancelFromLogin;
+        public static Boolean cancelFromLogin = true;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Boolean res = userBO.loginUser(loginText.Text,passText.Text);
@@ -43,7 +43,7 @@ namespace UMS
                 userpic = userBO.userpic;
                 this.Hide();
                 Home h = new Home();
-                cancelFromLogin = true;
+                cancelFromLogin = false;
                 h.fromLogin();
                 h.Show();
             }
@@ -103,15 +103,12 @@ namespace UMS
             {
                 Random random = new Random();
                 int r = random.Next(1, 10);
-                //String email = userBO.getMail(loginText.Text);
-                String email = emailText.Text;
-                
-                if (email == "Null" || (!email.Contains("@gmail.com") || (!email.Contains("@pucit.edu.pk") )))
+                MessageBox.Show("Do you want to give \"new\" or \"existing\" email?");
+                String choice = Interaction.InputBox("Done");
+                if (choice == "new")
                 {
-                    MessageBox.Show("Email Invalid.");
-                }
-                else 
-                {
+
+                    String email = Interaction.InputBox("Done");
                     Boolean res = sendEmail(email, "Reset Password Code", r.ToString());
                     if (res == true)
                     {
@@ -127,7 +124,24 @@ namespace UMS
                         MessageBox.Show("Email not sent.");
                     }
                 }
-                
+                else if (choice == "existing")
+                {
+                    String email = userBO.getMail(loginText.Text);
+                    Boolean res = sendEmail(email, "Reset Password Code", r.ToString());
+                    if (res == true)
+                    {
+                        String code = Interaction.InputBox("Confirm");
+                        if (code == r.ToString())
+                        {
+                            String pass = Interaction.InputBox("Reset");
+                            userBO.updatePass(loginText.Text, pass);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email not sent.");
+                    }
+                }
             }
         }
     }

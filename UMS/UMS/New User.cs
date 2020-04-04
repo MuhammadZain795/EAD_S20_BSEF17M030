@@ -90,15 +90,16 @@ namespace UMS
                 mainForm.fromNew = false;
                 fromNewUser();
             }
-            else if (Admin_Home.fromAdmin == true)
+            else if (Home.fromHome == false)
             {
-                Admin_Home.fromAdmin = false;
-                fromHomeForEdit(); 
-            }
-            else
-            {
-                Home.fromHome = false;
+                //Home.fromHome = true;
                 fromHomeForEdit();
+            }
+            else if (Admin_Home.fromAdmin == false) 
+            {
+                //Admin_Home.fromAdmin = true;
+                fromHomeForEdit();
+
             }
         }
         private Boolean validations()
@@ -120,10 +121,10 @@ namespace UMS
                 res = false;
                 MessageBox.Show("Must enter a strong password!!!");
             }
-            else if (!(emailText.Text.Contains("@gmail.com") || !(emailText.Text.Contains("@pucit.edu.pk"))))
+            else if ((emailText.Text.Contains("@gmail.com") && emailText.Text.Contains("@pucit.edu.pk")))
             {
                 res = false;
-                MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com)");
+                MessageBox.Show("Plaese enter Email correctly...(abc@gmail.com or pucit.edu.pk)");
             }
             else if (genderBox.Text == "")
             {
@@ -164,12 +165,14 @@ namespace UMS
                     this.Hide();
                     if (Admin_Home.fromAdmin == false)
                     {
+                        Admin_Home.fromAdmin = true;
                         this.Hide();
                         Admin_Home admin_Home = new Admin_Home();
                         admin_Home.Show();
                     }
                     else
                     {
+                        Home.fromHome = true;
                         Home h = new Home();
                         h.fromNew();
                         h.Show();
@@ -221,22 +224,22 @@ namespace UMS
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if(Home.cancelFromHome==true && Login.cancelFromLogin == true)
+            if(Home.cancelFromHome==false && Login.cancelFromLogin == false)
             {
-                Home.cancelFromHome = false;
-                Login.cancelFromLogin = false;
+                Home.cancelFromHome = true;
+                Login.cancelFromLogin = true;
                 cancelExistingFromLogin();
             }
-            else if (Admin_Home.cancelFromAdmin == true)
+            else if (Admin_Home.cancelFromAdmin == false)
             {
-                Admin_Home.cancelFromAdmin = false;
+                Admin_Home.cancelFromAdmin = true;
                 Admin_Home admin_Home = new Admin_Home();
                 this.Hide();
                 admin_Home.Show();
             }
-            else if(Home.cancelFromHome == true)
+            else if(Home.cancelFromHome == false)
             {
-                Home.cancelFromHome = false;
+                Home.cancelFromHome = true;
                 cancelExisting();
             }
             else
