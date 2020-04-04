@@ -103,10 +103,12 @@ namespace UMS
             {
                 Random random = new Random();
                 int r = random.Next(1, 10);
-                String email = userBO.getMail(loginText.Text);
-                if (email == "Null")
+                //String email = userBO.getMail(loginText.Text);
+                String email = emailText.Text;
+                
+                if (email == "Null" || (!email.Contains("@gmail.com") || (!email.Contains("@pucit.edu.pk") )))
                 {
-                    MessageBox.Show("Login Invalid.");
+                    MessageBox.Show("Email Invalid.");
                 }
                 else 
                 {
