@@ -1,0 +1,11 @@
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\BAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\BAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\DAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\Entities.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\DAL.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\DAL.dll.config
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\bin\Debug\Entities.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.csproj.CopyComplete
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.pdb

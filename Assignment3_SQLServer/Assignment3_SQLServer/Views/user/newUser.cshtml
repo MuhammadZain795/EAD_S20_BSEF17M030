@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnSubmit").on('click', function () {
+                alert('hello');
+                var login = $("#login").val();
+                var pass = $("#pass").val();
+                var name = $("#name").val();
+                var obj = { 'name': name, 'login': login, 'pass': pass };
+                            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: '@Url.Content("~/user/insertUser")',
+                data: obj,
+                success: function (resp) {
+                    console.log(resp);
+
+                    try {
+                        if (successFun) {
+                            successFun(resp)
+                        }
+                    } catch (e) {
+
+                    }
+                },
+                error: function (e) {
+                    if (errorFunc) {
+                        errorFunc();
+                    }
+                    else {
+                        alert("some error has occurred");
+                    }
+                }
+            };
+
+            $.ajax(settings);
+            });
+        });
+    </script>
+}
+<div>
+    Name: <input id="name" />
+    Login: <input id="login" />
+    Password: <input id="pass" />
+    <button id="btnSubmit">Submit</button>
+    <span>@ViewBag.Error</span>
+</div>
