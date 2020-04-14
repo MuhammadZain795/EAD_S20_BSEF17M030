@@ -8,13 +8,17 @@ namespace BAL
 {
     public class BO
     {
-        public static int insertUser(String name, String login, String pass)
+        public static void insertUser(String name, String login, String pass)
         {
-            return DAL.DAO.insertUser(name, login, pass);
+            DAL.DAO.insertUser(name, login, pass);
         }
         public static Boolean loginUser(String login, String pass)
         {
             return DAL.DAO.loginUser(login, pass);
+        }
+        public static Boolean loginValidationForNew(String login)
+        {
+            return DAL.DAO.loginValidationForNew(login);
         }
     }
 }

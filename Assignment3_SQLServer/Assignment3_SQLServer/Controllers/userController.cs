@@ -19,8 +19,6 @@ namespace Assignment3_SQLServer.Controllers
         [ActionName("Login")]
         public ActionResult Login1(String login, String pass)
         {
-            //String login = Request["Login"];
-            //String pass = Request["Pass"];
             if (BAL.BO.loginUser(login,pass) == true)
             {
                 Session["isValid"] = 1;
@@ -37,9 +35,21 @@ namespace Assignment3_SQLServer.Controllers
         {
             return View("newUser");
         }
-        public void insertUser(String name, String login, String pass)
+        public ActionResult insertUser(String name, String login, String pass)
         {
-            BAL.BO.insertUser(name, login, pass);
+            if (!(BAL.BO.loginValidationForNew(login)))
+            {
+                BAL.BO.insertUser(name, login, pass);
+                Session["isValid"] = 1;
+                return Redirect("~/Home/Index");
+            }
+            else
+            {
+                ViewBag.name = name;
+                ViewBag.login = login;
+                ViewBag.Error = "Login is already taken.";
+                return View("newUser");
+            }
         }
     }
 }
