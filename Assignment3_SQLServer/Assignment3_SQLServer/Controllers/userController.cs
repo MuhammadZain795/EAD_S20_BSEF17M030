@@ -19,7 +19,7 @@ namespace Assignment3_SQLServer.Controllers
         [ActionName("Login")]
         public ActionResult Login1(String login, String pass)
         {
-            if (BAL.BO.loginUser(login,pass) == true)
+            if (login!="" && pass!="" && BAL.BO.loginUser(login,pass) == true)
             {
                 Session["isValid"] = 1;
                 return Redirect("~/Home/Index");
