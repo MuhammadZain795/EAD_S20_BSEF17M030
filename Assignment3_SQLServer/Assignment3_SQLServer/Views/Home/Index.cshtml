@@ -1,31 +1,114 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@section scripts{
+    <script>
+        
+        $(document).ready(function () {
+            
+            var pid = $('.home .root').attr('name');
+            alert(pid);
+            folderDisplay(pid);
+        });
+        function folderDisplay(parentName) {
+            var obj = { pId: parentName };
+            var ajaxcallShow = {
+                type: "POST",
+                dataType: "json",
+                url: '@Url.Content("~/user/getChildFolders")',
+                data: obj,
+                success: successShow,
+                error: errorShow,
+            }
+            $.ajax(ajaxcallShow);
+        }
+        function successShow(res) {
+            for (var i = 0; i < res.length; i++) {
+                var elem1 = $("<div>").attr({ "name": res[i].folderId, "class": "root", "id": "folder" }).css({ "cursor": "pointer", "border": "2px solid black", "width": "100px" });
+                elem1.html('<i class="fa fa-folder" aria-hidden="true"></i> ' + res[i].folderName);
+                $(".folders").append(elem1);
+                $(".folders").append("<br>");
+            }
+            $('.root').dblclick(function () {
+                $('.folders .root').remove();
+                $('.folders br').remove();
+                var t = $(this).text();
+                var n = $(this).attr("name");
+                $('.home .root').text(t);
+                $('.home .root').attr('name', n);
+                folderDisplay(n);
+            });
+        }
+        function errorShow(res) {
+            for (var i = 0; i < res.length; i++) {
+                var elem1 = $("<span>").attr("name", res[i][0]).attr("class", "root");
+                elem1.text(res[i][1]);
+                $("#main").append(elem1);
+                $("#main").append("<hr>");
+            }
+        }
+        function test() {
+            
+            var pid1 = $('.root').attr('name');
+            alert(pid1)
+            var n = $('#fname').val();
+            var obj = { foldername: n, parentId: pid1 };
+            var ajaxcall2 = {
+                type: "POST",
+                dataType: "json",
+                url: '@Url.Content("~/user/createFolder")',
+                data: obj,
+                success: successCreate,
+                error: errorCreate,
+            }
+            $.ajax(ajaxcall2);
+        };
+        function successCreate(res) {
+            if (res == "samenNameNotAllowed") {
+                alert("Same name is not allowed...");
+            }
+            else {
+                $('#id01').hide();
+                $('.folders .root').remove();
+                $('.folders hr').remove();
+                let n1 = $('.home .root').attr('name');
+                folderDisplay(n1);
+            }
+        }
+        function errorCreate(res) {
+            alert("Got here");
+            if (res == "samenNameNotAllowed") {
+                alert("Same name is not allowed...");
+            }
+        }
+    </script>
+}
+<div class="container mt-4" id="main">
+    <div class="row">
+        Name: <input id="fname" /><br />
+        <button id="btn" onclick="test()" class="btn btn-primary">Done</button>
+        @*<div class="modalBtn col-6">
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white modalBtn">Create a folder</button><hr>
+        </div>*@
+    </div><hr>
+    @*<div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal pt-4 pb-4">
+                Name: <input type="text" id="fname" name="fname" placeholder="Enter folder name..." /><hr>
+                <button type="button" id="btn" name="btn" class="w3-button w3-black">Done</button>
+            </header>
+        </div>*@
+    @*</div>*@
+    <div class="home">
+        <div class="root" name="0" id="folder" style="border: 2px solid black; padding:2px; cursor:pointer; width:100px">root</div><hr>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <div class="folders"></div>
 </div>
+<form action='@Url.Content(@"~/User/Login")' method="post">
+    <div class="col-6 logoutBtn">
+        <button type="button" id="logout">Log Out</button><hr>
+    </div>
+</form>

@@ -51,5 +51,30 @@ namespace Assignment3_SQLServer.Controllers
                 return View("newUser");
             }
         }
+        [HttpPost]
+        public JsonResult getChildFolders(int pId)
+        {
+            var list = BAL.BO.getChildFolders(pId);
+            var temp = new
+            {
+                data = list
+            };
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        //[HttpPost]
+        //public void createFolder(String folderName, Int32 parentId)
+        //{
+        //    BAL.BO.createFolder(folderName, parentId);
+        //}
+        [HttpPost]
+        public JsonResult createFolder(String folderName, Int32 parentId)
+        {
+            BAL.BO.createFolder(folderName, parentId);
+            var h = new
+            {
+                msg = "Succesfull Created"
+            };
+            return Json(h, JsonRequestBehavior.AllowGet);
+        }
     }
 }

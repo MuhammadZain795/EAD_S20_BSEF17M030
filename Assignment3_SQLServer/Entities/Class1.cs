@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Class1
+    public class folderData
     {
+        public Int32 folderId { get; set; }
+        public String folderName { get; set; }
     }
 }

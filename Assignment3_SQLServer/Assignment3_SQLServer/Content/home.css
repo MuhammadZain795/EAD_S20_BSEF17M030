@@ -1,0 +1,16 @@
+﻿#folder {
+    border-radius: 6px;
+    background-color: azure;
+}
+
+.modalBtn {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+.logoutBtn {
+    display: flex;
+    justify-content: left;
+    height: 25px;
+}

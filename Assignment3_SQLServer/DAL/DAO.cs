@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
 
 namespace DAL
 {
@@ -48,6 +49,36 @@ namespace DAL
                 if (temp.Read() == true)
                     return true;
                 return false;
+            }
+        }
+        public static List<folderData> getChildFolders(int pId)
+        {
+            List<folderData> data = new List<folderData>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query = @"Select * from dbo.folder where ParentId='" + pId + "';";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader temp = command.ExecuteReader();
+                if (temp.Read() == true)
+                {
+                    folderData folderData = new folderData();
+                    folderData.folderId = Convert.ToInt32(temp["FolderId"]);
+                    folderData.folderName = (temp["FolderName"]).ToString();
+                    data.Add(folderData);
+                }
+                return data;
+            }
+        }
+        public static void createFolder(String folderName,Int32 parentId)
+        {
+            using (SqlConnection conn1 = new SqlConnection(connString))
+            {
+                conn1.Open();
+                String query = String.Format("Insert into dbo.folder(FolderName,ParentId) Values('{0}',{1})",folderName,parentId);
+                SqlCommand command2 = new SqlCommand(query, conn1);
+                SqlDataReader res = command2.ExecuteReader();
+
             }
         }
     }

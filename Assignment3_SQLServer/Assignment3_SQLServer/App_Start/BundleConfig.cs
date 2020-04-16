@@ -24,7 +24,9 @@ namespace Assignment3_SQLServer
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/home.css"));
+            bundles.Add(new ScriptBundle("~/bundles/myJ").Include("~/Scripts/jquery-3.4.1.js"));
         }
     }
 }
