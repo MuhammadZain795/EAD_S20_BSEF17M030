@@ -61,20 +61,21 @@
             $.ajax(ajaxcall2);
         };
         function successCreate(res) {
-            if (res == "samenNameNotAllowed") {
+           
+            if (res == "sameNameNotAllowed") {
                 alert("Same name is not allowed...");
             }
-            else {
-                ////$('#id01').hide();
+            else{
                 $('.folders .root').remove();
-                $('.folders hr').remove();
+                $('.folders br').remove();
                 var n1 = $('.home .root').attr('name');
                 folderDisplay(n1);
             }
         }
         function errorCreate(res) {
+            
             alert("Got here");
-            if (res == "samenNameNotAllowed") {
+            if (res == "sameNameNotAllowed") {
                 alert("Same name is not allowed...");
             }
         }

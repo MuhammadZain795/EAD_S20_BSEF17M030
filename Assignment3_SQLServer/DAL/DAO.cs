@@ -81,5 +81,20 @@ namespace DAL
 
             }
         }
+        public static Boolean checkName(String fname, Int32 pId)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                String query = @"Select * from dbo.folder where FolderName='" + fname + "' and ParentId='" + pId + "'";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader temp = command.ExecuteReader();
+                if (temp.Read() == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

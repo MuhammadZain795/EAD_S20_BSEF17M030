@@ -61,20 +61,32 @@ namespace Assignment3_SQLServer.Controllers
             };
             return Json(list, JsonRequestBehavior.AllowGet);
         }
-        //[HttpPost]
-        //public void createFolder(String folderName, Int32 parentId)
-        //{
-        //    BAL.BO.createFolder(folderName, parentId);
-        //}
+        public static Boolean checkName(String fname, Int32 pId)
+        {
+            return BAL.BO.checkName(fname, pId);
+        }
         [HttpPost]
         public JsonResult createFolder(String folderName, Int32 parentId)
         {
-            BAL.BO.createFolder(folderName, parentId);
-            var h = new
+            if (checkName(folderName, parentId) == false)
             {
-                msg = "Succesfull Created"
-            };
-            return Json(h, JsonRequestBehavior.AllowGet);
+                BAL.BO.createFolder(folderName, parentId);
+                var h = new
+                {
+                    msg = "Succesfull Created"
+                };
+                return Json(h, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var h = new
+                {
+                    msg = "sameNameNotAllowed"
+                };
+                return Json("sameNameNotAllowed", JsonRequestBehavior.AllowGet);
+            }
+
+            
         }
     }
 }

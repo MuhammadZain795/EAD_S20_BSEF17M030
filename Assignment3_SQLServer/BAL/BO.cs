@@ -29,5 +29,9 @@ namespace BAL
         {
             DAL.DAO.createFolder(folderName, parentId);
         }
+        public static Boolean checkName(String fname, Int32 pId)
+        {
+            return DAL.DAO.checkName(fname, pId);
+        }
     }
 }
