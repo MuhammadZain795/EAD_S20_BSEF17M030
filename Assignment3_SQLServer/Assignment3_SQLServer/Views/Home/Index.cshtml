@@ -5,11 +5,8 @@
 
 @section scripts{
     <script>
-        
         $(document).ready(function () {
-            
             var pid = $('.home .root').attr('name');
-            alert(pid);
             folderDisplay(pid);
         });
         function folderDisplay(parentName) {
@@ -50,11 +47,9 @@
             }
         }
         function test() {
-            
-            var pid1 = $('.root').attr('name');
-            alert(pid1)
+            var pid1 = $('.home .root').attr('name');
             var n = $('#fname').val();
-            var obj = { foldername: n, parentId: pid1 };
+            var obj = { folderName: n, parentId: pid1 };
             var ajaxcall2 = {
                 type: "POST",
                 dataType: "json",
@@ -70,10 +65,10 @@
                 alert("Same name is not allowed...");
             }
             else {
-                $('#id01').hide();
+                ////$('#id01').hide();
                 $('.folders .root').remove();
                 $('.folders hr').remove();
-                let n1 = $('.home .root').attr('name');
+                var n1 = $('.home .root').attr('name');
                 folderDisplay(n1);
             }
         }
@@ -107,7 +102,7 @@
 
     <div class="folders"></div>
 </div>
-<form action='@Url.Content(@"~/User/Login")' method="post">
+<form action='@Url.Content(@"~/User/Login")' method="get">
     <div class="col-6 logoutBtn">
         <button type="button" id="logout">Log Out</button><hr>
     </div>

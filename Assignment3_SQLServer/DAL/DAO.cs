@@ -60,7 +60,7 @@ namespace DAL
                 String query = @"Select * from dbo.folder where ParentId='" + pId + "';";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader temp = command.ExecuteReader();
-                if (temp.Read() == true)
+                while (temp.Read() == true)
                 {
                     folderData folderData = new folderData();
                     folderData.folderId = Convert.ToInt32(temp["FolderId"]);
