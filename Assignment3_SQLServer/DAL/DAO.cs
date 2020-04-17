@@ -85,11 +85,25 @@ namespace DAL
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
+                Boolean res1 = false;
+                Boolean res2 = false;
                 conn.Open();
                 String query = @"Select * from dbo.folder where FolderName='" + fname + "' and ParentId='" + pId + "'";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader temp = command.ExecuteReader();
                 if (temp.Read() == true)
+                {
+                    res1 = true;
+                }
+                temp.Close();
+                String query1 = @"Select * from dbo.folder where FolderName='" + fname + "' and FolderId='" + pId + "'";
+                SqlCommand command1 = new SqlCommand(query1, conn);
+                SqlDataReader temp1 = command1.ExecuteReader();
+                if(temp1.Read() == true)
+                {
+                    res2 = true;
+                }
+                if (res1 == true || res2 == true || ((fname == "root") && (pId == 0))) 
                 {
                     return true;
                 }

@@ -27,7 +27,7 @@ namespace Assignment3_SQLServer.Controllers
             else
             {
                 ViewBag.Login = login;
-                ViewBag.Error = "Invalid";
+                ViewBag.Error = "Login or Password is inncorrect!!!";
                 return View("Login");
             }
         }
@@ -37,7 +37,14 @@ namespace Assignment3_SQLServer.Controllers
         }
         public ActionResult insertUser(String name, String login, String pass)
         {
-            if (!(BAL.BO.loginValidationForNew(login)))
+            if (name == "" || login == "" || pass == "")
+            {
+                ViewBag.name = name;
+                ViewBag.login = login;
+                ViewBag.Error = "Enter complete credentials.";
+                return View("newUser");
+            }
+            else if (!(BAL.BO.loginValidationForNew(login)))
             {
                 BAL.BO.insertUser(name, login, pass);
                 Session["isValid"] = 1;
