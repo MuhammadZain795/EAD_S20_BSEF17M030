@@ -4,15 +4,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
+@section scripts {
 
-<form action='@Url.Content(@"~/User/insertUser")' method="post">
-    Name: <input type="text" name="name" value="@ViewBag.name" /><br />
-    User Login : <input type="text" name="login" value="@ViewBag.login" /><br />
-    Password : <input type="password" name="pass" /><br />
-    <button type="submit">Sign Up</button><br />
+    <script>
+        $(function () {
+            $("#btnSignUp").click(function () {
+                //debugger;
+                var name = $("#name").val();
+                var login = $("#login").val();
+                var pass = $("#pass").val();
+
+                var d = { "name": name, "login": login, "pass": pass };
+
+                var settings = {
+                    type : "POST",
+                    dataType: "json",
+                    url: "/User/insertUser",
+                    data: d,
+                    success: function (resp) {
+                        if (resp.valid == true) {
+                            location.href = resp.urlToRedirect;
+                        }
+                        else {
+                            alert("Login is already in use.");
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                    }
+                };
+
+                $.ajax(settings);
+
+                return false;
+            });
+        });
+    </script>
+
+}
+
+<h2>SignUp</h2>
+
+    Name: <input type="text" id="name" value="@ViewBag.name" /><br />
+    User Login : <input type="text" id="login" value="@ViewBag.login" /><br />
+    Password : <input type="password" id="pass" /><br />
+    <button type="submit" id="btnSignUp">Sign Up</button><br />
     <span style="color:red">@ViewBag.Error</span>
-</form>
 <form action='@Url.Content(@"~/User/Login")' method="get">
     <button type="submit">Login</button>
 </form>

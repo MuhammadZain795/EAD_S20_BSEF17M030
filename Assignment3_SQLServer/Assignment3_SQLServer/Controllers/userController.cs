@@ -55,28 +55,39 @@ namespace Assignment3_SQLServer.Controllers
         {
             return View("newUser");
         }
-        public ActionResult insertUser(String name, String login, String pass)
+        public JsonResult insertUser(String name, String login, String pass)
         {
-            if (name == "" || login == "" || pass == "")
+            Object data = null;
+
+            try
             {
-                ViewBag.name = name;
-                ViewBag.login = login;
-                ViewBag.Error = "Enter complete credentials.";
-                return View("newUser");
+                var url = "";
+                var flag = false;
+
+                var obj = BAL.BO.loginValidationForNew(login);
+                if (obj == false && login != "" && pass != "" && name != "")
+                {
+                    flag = true;
+                    Session["isValid"] = 1;
+                    url = Url.Content("~/Home/Index");
+                }
+
+                data = new
+                {
+                    valid = flag,
+                    urlToRedirect = url
+                };
             }
-            else if (!(BAL.BO.loginValidationForNew(login)))
+            catch (Exception)
             {
-                BAL.BO.insertUser(name, login, pass);
-                Session["isValid"] = 1;
-                return Redirect("~/Home/Index");
+                data = new
+                {
+                    valid = false,
+                    urlToRedirect = ""
+                };
             }
-            else
-            {
-                ViewBag.name = name;
-                ViewBag.login = login;
-                ViewBag.Error = "Login is already taken.";
-                return View("newUser");
-            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult getChildFolders(int pId)
