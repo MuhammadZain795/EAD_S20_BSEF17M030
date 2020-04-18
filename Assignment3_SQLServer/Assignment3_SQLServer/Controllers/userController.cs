@@ -16,20 +16,40 @@ namespace Assignment3_SQLServer.Controllers
             return View();
         }
         [HttpPost]
-        [ActionName("Login")]
-        public ActionResult Login1(String login, String pass)
+        //[ActionName("Login")]
+        public JsonResult Login1(String login, String pass)
         {
-            if (login!="" && pass!="" && BAL.BO.loginUser(login,pass) == true)
+            Object data = null;
+
+            try
             {
-                Session["isValid"] = 1;
-                return Redirect("~/Home/Index");
+                var url = "";
+                var flag = false;
+
+                var obj = BAL.BO.loginUser(login, pass);
+                if (obj == true && login != "" && pass != "")
+                {
+                    flag = true;
+                    Session["isValid"] = 1;
+                        url = Url.Content("~/Home/Index");
+                }
+
+                data = new
+                {
+                    valid = flag,
+                    urlToRedirect = url
+                };
             }
-            else
+            catch (Exception)
             {
-                ViewBag.Login = login;
-                ViewBag.Error = "Login or Password is inncorrect!!!";
-                return View("Login");
+                data = new
+                {
+                    valid = false,
+                    urlToRedirect = ""
+                };
             }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult newUser()
         {
