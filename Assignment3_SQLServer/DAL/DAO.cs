@@ -4,21 +4,23 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using Entities;
+
 
 namespace DAL
 {
     public class DAO
     {
-        private static String connString = "Data Source=DESKTOP-IND7HCK\\SQLEXPRESS; Initial Catalog=Assignment3;User ID=sa;Password=1234";
+        private static String connString = @"server=localhost; port=3306;Uid=root;Pwd=;database=Assignment3;Convert Zero Datetime=True";
         public static Boolean loginValidationForNew(String login)
         {
-            SqlDataReader l;
+            MySqlDataReader l;
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
                 String query1 = @"Select Login from dbo.users where Login='" + login + "'";
-                SqlCommand command1 = new SqlCommand(query1, conn);
+                MySqlCommand command1 = new MySqlCommand(query1, conn);
                 l = command1.ExecuteReader();
                 if (l.Read())
                 {
@@ -29,23 +31,23 @@ namespace DAL
         }
         public static void insertUser(String name, String login, String pass)
         {
-            using (SqlConnection conn1 = new SqlConnection(connString))
+            using (MySqlConnection conn1 = new MySqlConnection(connString))
             {
                 conn1.Open();
                 String query = @"Insert into dbo.users(Name,Login,Password) Values('" + name + "', '" + login + "','" + pass + "'); ";
-                SqlCommand command2 = new SqlCommand(query, conn1);
-                SqlDataReader res = command2.ExecuteReader();
+                MySqlCommand command2 = new MySqlCommand(query, conn1);
+                MySqlDataReader res = command2.ExecuteReader();
                 
             }
         }
         public static Boolean loginUser(String login, String pass)
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 conn.Open();
                 String query = @"Select * from dbo.users where Login='" + login + "'and Password='" + pass + "';";
-                SqlCommand command = new SqlCommand(query, conn);
-                SqlDataReader temp = command.ExecuteReader();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader temp = command.ExecuteReader();
                 if (temp.Read() == true)
                     return true;
                 return false;
@@ -54,11 +56,11 @@ namespace DAL
         public static List<folderData> getChildFolders(int pId)
         {
             List<folderData> data = new List<folderData>();
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 conn.Open();
                 String query = @"Select * from dbo.folder where ParentId='" + pId + "';";
-                SqlCommand command = new SqlCommand(query, conn);
+                MySqlCommand command = new MySqlCommand(query, conn);
                 SqlDataReader temp = command.ExecuteReader();
                 while (temp.Read() == true)
                 {
@@ -72,33 +74,33 @@ namespace DAL
         }
         public static void createFolder(String folderName,Int32 parentId)
         {
-            using (SqlConnection conn1 = new SqlConnection(connString))
+            using (MySqlConnection conn1 = new MySqlConnection(connString))
             {
                 conn1.Open();
                 String query = String.Format("Insert into dbo.folder(FolderName,ParentId) Values('{0}',{1})",folderName,parentId);
-                SqlCommand command2 = new SqlCommand(query, conn1);
-                SqlDataReader res = command2.ExecuteReader();
+                MySqlCommand command2 = new MySqlCommand(query, conn1);
+                MySqlDataReader res = command2.ExecuteReader();
 
             }
         }
         public static Boolean checkName(String fname, Int32 pId)
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 Boolean res1 = false;
                 Boolean res2 = false;
                 conn.Open();
                 String query = @"Select * from dbo.folder where FolderName='" + fname + "' and ParentId='" + pId + "'";
-                SqlCommand command = new SqlCommand(query, conn);
-                SqlDataReader temp = command.ExecuteReader();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataReader temp = command.ExecuteReader();
                 if (temp.Read() == true)
                 {
                     res1 = true;
                 }
                 temp.Close();
                 String query1 = @"Select * from dbo.folder where FolderName='" + fname + "' and FolderId='" + pId + "'";
-                SqlCommand command1 = new SqlCommand(query1, conn);
-                SqlDataReader temp1 = command1.ExecuteReader();
+                MySqlCommand command1 = new MySqlCommand(query1, conn);
+                MySqlDataReader temp1 = command1.ExecuteReader();
                 if(temp1.Read() == true)
                 {
                     res2 = true;
