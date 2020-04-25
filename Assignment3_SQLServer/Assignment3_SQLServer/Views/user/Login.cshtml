@@ -1,32 +1,28 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 
 @section scripts {
 
     <script>
         $(function () {
             $("#btnLogin").click(function () {
-                debugger;
+                //debugger;
                 var login = $("#login").val();
                 var pass = $("#pass").val();
 
                 var d = { "login": login, "pass": pass };
 
                 var settings = {
-                    type : "POST",
+                    type : "GET",
                     dataType: "json",
-                    url: "/User/Login1",
+                    url: "https://localhost:44397/api/userApi/validate",
                     data: d,
                     success: function (resp) {
-                        if (resp.valid == true) {
-                            location.href = resp.urlToRedirect;
-                        }
-                        else {
-                            alert("Invalid Login/Password");
-                        }
+                        alert(resp.data)
                     },
                     error: function (e) {
                         alert("error");

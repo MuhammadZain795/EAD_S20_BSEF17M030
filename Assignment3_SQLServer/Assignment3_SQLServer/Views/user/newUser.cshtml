@@ -17,20 +17,20 @@
                 var d = { "name": name, "login": login, "pass": pass };
 
                 var settings = {
-                    type : "POST",
+                    type : "Get",
                     dataType: "json",
-                    url: "/User/insertUser",
+                    url: "https://localhost:44397/api/userApi/newUser",
                     data: d,
                     success: function (resp) {
-                        if (resp.valid == true) {
-                            location.href = resp.urlToRedirect;
+                        if (resp.data == "Invalid") {
+                            alert("Login is already in use.");
                         }
                         else {
-                            alert("Login is already in use.");
+                            location.href = resp.urlToRedirect;
                         }
                     },
                     error: function (e) {
-                        alert("error");
+                        alert(e);
                     }
                 };
 

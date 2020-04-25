@@ -3,3 +3,8 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\Entities\bin\Debug\Entities.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\Entities\bin\Debug\Entities.pdb
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\Entities\obj\Debug\Entities.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\Entities\obj\Debug\Entities.pdb

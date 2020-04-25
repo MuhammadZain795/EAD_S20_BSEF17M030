@@ -18,6 +18,9 @@ namespace webApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var xmlFormaters = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
+            var appXmlType = xmlFormaters.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "applicatin/xml");
             GlobalConfiguration.Configuration.Formatters
                 .Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }

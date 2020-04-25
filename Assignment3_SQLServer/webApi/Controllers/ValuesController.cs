@@ -19,6 +19,7 @@ namespace WebApplication8.Controllers
         [HttpGet]
         public Object GetToken(String login, String pass)
         {
+            Console.WriteLine(login);
             string key = "my_secret_key_12345";
             var issuer = "http://mysite.com";
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));

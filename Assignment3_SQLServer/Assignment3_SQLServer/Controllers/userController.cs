@@ -69,7 +69,7 @@ namespace Assignment3_SQLServer.Controllers
                 {
                     flag = true;
                     Session["isValid"] = 1;
-                    url = Url.Content("~/Home/Index");
+                    url = Url.Content("~/user/Login");
                 }
 
                 data = new
