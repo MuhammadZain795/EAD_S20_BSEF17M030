@@ -120,3 +120,5 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\ob
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\bin\System.Web.Cors.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\bin\System.Web.Http.Cors.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\bin\System.Web.Http.Cors.xml
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\bin\Microsoft.Owin.Cors.dll
+C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030 4\Assignment3_SQLServer\webApi\bin\Microsoft.Owin.Cors.xml

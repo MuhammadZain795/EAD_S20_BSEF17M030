@@ -76,11 +76,47 @@ namespace webApi.Controllers
             else
                 return new { data = "Invalid" };
         }
+        [Authorize]
+        [HttpGet]
+        public object getChildFolders(int pId)
+        {
+            var list = BAL.BO.getChildFolders(pId);
+            return list;
+        }
+        public static Boolean checkName(String fname, Int32 pId)
+        {
+            return BAL.BO.checkName(fname, pId);
+        }
+        [Authorize]
+        [HttpGet]
+        public object createFolder(String folderName, Int32 parentId)
+        {
+            if (checkName(folderName, parentId) == false)
+            {
+                BAL.BO.createFolder(folderName, parentId);
+                var h = new
+                {
+                    msg = "Succesfull Created"
+                };
+                return h;
+            }
+            else
+            {
+                var h = new
+                {
+                    msg = "sameNameNotAllowed"
+                };
+                return h;
+            }
+
+
+        }
         [HttpGet]
         public int sum(std std)
         {
             return std.temp;
         }
+        //[Authorize]
         [HttpGet]
         public int test()
         {

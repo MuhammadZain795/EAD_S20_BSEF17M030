@@ -11,6 +11,7 @@
         $(function () {
             $("#btnLogin").click(function () {
                 //debugger;
+                var token;
                 var login = $("#login").val();
                 var pass = $("#pass").val();
 
@@ -22,22 +23,24 @@
                     url: "https://localhost:44397/api/userApi/validate",
                     data: d,
                     success: function (resp) {
-                        alert(resp.data)
+                        if (resp.data == "Invalid")
+                            alert("Password or UserName is wrong!!!");
+                        else {
+                            sessionStorage.setItem("token", resp.data);
+                            window.location.assign("https://localhost:44368/Home/Index");
+                        }
                     },
-                    error: function (e) {
-                        alert("error");
+                    error: function (resp) {
+                        alert("UserName or Password is inncorrect!!!");
                     }
                 };
-
                 $.ajax(settings);
-
                 return false;
             });
         });
     </script>
 
 }
-
 
 <h2>Login</h2>
 

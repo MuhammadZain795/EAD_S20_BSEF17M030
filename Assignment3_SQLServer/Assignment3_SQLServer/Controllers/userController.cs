@@ -15,40 +15,15 @@ namespace Assignment3_SQLServer.Controllers
             ViewBag.Error = TempData["Msg"];
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         //[ActionName("Login")]
-        public JsonResult Login1(String login, String pass)
+        public JsonResult Login1(String token)
         {
-            Object data = null;
-
-            try
+            Session["isValid"] = "Bearer " + token;
+            object data = new
             {
-                var url = "";
-                var flag = false;
 
-                var obj = BAL.BO.loginUser(login, pass);
-                if (obj == true && login != "" && pass != "")
-                {
-                    flag = true;
-                    Session["isValid"] = 1;
-                        url = Url.Content("~/Home/Index");
-                }
-
-                data = new
-                {
-                    valid = flag,
-                    urlToRedirect = url
-                };
-            }
-            catch (Exception)
-            {
-                data = new
-                {
-                    valid = false,
-                    urlToRedirect = ""
-                };
-            }
-
+            };
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult newUser()

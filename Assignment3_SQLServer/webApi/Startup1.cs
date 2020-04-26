@@ -15,6 +15,7 @@ namespace WebApplication8
     {
         public void Configuration(IAppBuilder app)
         {
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseJwtBearerAuthentication(
                 new JwtBearerAuthenticationOptions
                 {

@@ -10,16 +10,18 @@ namespace Assignment3_SQLServer.Controllers
     {
         public ActionResult Index()
         {
-            var s = Session["isValid"];
-            if (s != null)
-            {
-                return View();
-            }
-            else
-            {
-                TempData["Msg"] = "Unauthorized Access";
-                return Redirect("~/user/Login");
-            }
+            return View();
+            //var s = Session["isValid"];
+            //Console.WriteLine(s);
+            //if (s != null)
+            //{
+            //    return View();
+            //}
+            //else
+            //{
+            //    TempData["Msg"] = "Unauthorized Access";
+            //    return Redirect("~/user/Login");
+            //}
         }
 
         public ActionResult About()

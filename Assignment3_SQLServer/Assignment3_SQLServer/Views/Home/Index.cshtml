@@ -6,15 +6,20 @@
 @section scripts{
     <script>
         $(document).ready(function () {
+            if (!sessionStorage.getItem("token"))
+                window.location.assign("https://localhost:44368/user/Login")
             var pid = $('.home .root').attr('name');
             folderDisplay(pid);
         });
         function folderDisplay(parentName) {
             var obj = { pId: parentName };
             var ajaxcallShow = {
-                type: "POST",
+                type: "Get",
                 dataType: "json",
-                url: '@Url.Content("~/user/getChildFolders")',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                },
+                url: "https://localhost:44397/api/userApi/getChildFolders",
                 data: obj,
                 success: successShow,
                 error: errorShow,
@@ -51,9 +56,12 @@
             var n = $('#fname').val();
             var obj = { folderName: n, parentId: pid1 };
             var ajaxcall2 = {
-                type: "POST",
+                type: "Get",
                 dataType: "json",
-                url: '@Url.Content("~/user/createFolder")',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                },
+                url: "https://localhost:44397/api/userApi/createFolder",
                 data: obj,
                 success: successCreate,
                 error: errorCreate,
@@ -62,7 +70,7 @@
         };
         function successCreate(res) {
            
-            if (res == "sameNameNotAllowed") {
+            if (res.msg == "sameNameNotAllowed") {
                 alert("Same name is not allowed...");
             }
             else{
@@ -76,7 +84,7 @@
         function errorCreate(res) {
             
             alert("Got here");
-            if (res == "sameNameNotAllowed") {
+            if (res.msg == "sameNameNotAllowed") {
                 alert("Same name is not allowed...");
             }
         }

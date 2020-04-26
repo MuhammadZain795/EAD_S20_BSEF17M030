@@ -22,13 +22,13 @@
                     url: "https://localhost:44397/api/userApi/newUser",
                     data: d,
                     success: function (resp) {
-                        if (resp.data == "Invalid") {
-                            alert("Login is already in use.");
-                        }
+                        if (resp.data == "Invalid")
+                            alert("UserName already exist!!!");
                         else {
-                            location.href = resp.urlToRedirect;
+                            sessionStorage.setItem("token", resp.data);
+                            window.location.assign("https://localhost:44368/Home/Index");
                         }
-                    },
+                        },
                     error: function (e) {
                         alert(e);
                     }

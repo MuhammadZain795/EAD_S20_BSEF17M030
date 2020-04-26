@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace webApi
 {
@@ -11,7 +12,8 @@ namespace webApi
         {
             // Web API configuration and services
 
-            config.EnableCors();
+            var cors = new EnableCorsAttribute("https://localhost:44368", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
