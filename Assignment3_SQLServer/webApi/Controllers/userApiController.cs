@@ -32,8 +32,8 @@ namespace webApi.Controllers
                 var permClaims = new List<Claim>();
                 permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
                 permClaims.Add(new Claim("valid", "1"));
-                permClaims.Add(new Claim("userid", "1"));
-                permClaims.Add(new Claim("name", "bilal"));
+                permClaims.Add(new Claim("userid", login));
+                permClaims.Add(new Claim("pass", pass));
 
                 var token = new JwtSecurityToken(issuer,
                                 issuer,
@@ -61,8 +61,8 @@ namespace webApi.Controllers
                 var permClaims = new List<Claim>();
                 permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
                 permClaims.Add(new Claim("valid", "1"));
-                permClaims.Add(new Claim("userid", "1"));
-                permClaims.Add(new Claim("name", "bilal"));
+                permClaims.Add(new Claim("userid", login));
+                permClaims.Add(new Claim("pass", pass));
 
                 var token = new JwtSecurityToken(issuer,
                                 issuer,
