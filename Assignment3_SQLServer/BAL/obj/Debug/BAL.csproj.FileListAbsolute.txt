@@ -9,3 +9,15 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.csproj.CopyComplete
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\BAL\obj\Debug\BAL.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\BAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\BAL.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\DAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\Entities.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\DAL.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\DAL.dll.config
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\bin\Debug\Entities.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\obj\Debug\BAL.csproj.CopyComplete
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\obj\Debug\BAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\BAL\obj\Debug\BAL.pdb

@@ -67,6 +67,7 @@ namespace Assignment3_SQLServer.Controllers
                 var obj = BAL.BO.loginValidationForNew(login);
                 if (obj == false && login != "" && pass != "" && name != "")
                 {
+                    BAL.BO.insertUser(name, login, pass);
                     flag = true;
                     Session["isValid"] = 1;
                     url = Url.Content("~/Home/Index");

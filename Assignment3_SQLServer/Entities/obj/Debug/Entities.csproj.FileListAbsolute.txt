@@ -3,3 +3,9 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030  3\Assignment3_SQLServer\Entities\obj\Debug\Entities.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\bin\Debug\Entities.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\bin\Debug\Entities.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\obj\Debug\Entities.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030-SQLServer 3\EAD_S20_BSEF17M030\Assignment3_SQLServer\Entities\obj\Debug\Entities.pdb
