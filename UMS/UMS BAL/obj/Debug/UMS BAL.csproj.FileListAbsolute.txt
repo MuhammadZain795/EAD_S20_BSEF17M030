@@ -12,3 +12,18 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\userDataLis
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\userDataList.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\DataForAdminToEdit.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\UMS BAL\bin\Debug\DataForAdminToEdit.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\UMS BAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\UMS BAL.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\DataForAdminToEdit.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\UMS DAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\userDataList.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\userDTO.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\DataForAdminToEdit.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\UMS DAL.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\userDataList.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\bin\Debug\userDTO.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\obj\Debug\UMS BAL.csprojAssemblyReference.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\obj\Debug\UMS BAL.csproj.CoreCompileInputs.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\obj\Debug\UMS BAL.csproj.CopyComplete
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\obj\Debug\UMS BAL.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\UMS BAL\obj\Debug\UMS BAL.pdb

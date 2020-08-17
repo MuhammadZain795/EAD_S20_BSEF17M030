@@ -3,3 +3,9 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\DataForAdminToEdit\bin\Debug\
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.csprojAssemblyReference.cache
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\bin\Debug\DataForAdminToEdit.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\bin\Debug\DataForAdminToEdit.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.csprojAssemblyReference.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.csproj.CoreCompileInputs.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\DataForAdminToEdit\obj\Debug\DataForAdminToEdit.pdb

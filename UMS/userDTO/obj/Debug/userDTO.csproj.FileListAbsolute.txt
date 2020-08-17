@@ -6,3 +6,12 @@ C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\obj\Debug\userDTO.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\bin\Debug\userDataList.dll
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\bin\Debug\userDataList.pdb
 C:\Users\#Zain\source\repos\EAD_S20_BSEF17M030\UMS\userDTO\obj\Debug\userDTO.csproj.CopyComplete
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\bin\Debug\userDTO.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\bin\Debug\userDTO.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\bin\Debug\userDataList.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\bin\Debug\userDataList.pdb
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\obj\Debug\userDTO.csprojAssemblyReference.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\obj\Debug\userDTO.csproj.CoreCompileInputs.cache
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\obj\Debug\userDTO.csproj.CopyComplete
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\obj\Debug\userDTO.dll
+D:\6th semester\EAD\EAD_S20_BSEF17M030_UMS\UMS\userDTO\obj\Debug\userDTO.pdb
